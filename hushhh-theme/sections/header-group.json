@@ -4,15 +4,35 @@
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "msg-1": { "type": "message", "settings": { "text": "SHOP SUMMER CLEARANCE SALE — LIMITED TIME OFFER" } }
+      },
+      "block_order": ["msg-1"]
     },
     "countdown-bar": {
       "type": "countdown-bar",
-      "settings": {}
+      "settings": {
+        "enable": true,
+        "label": "Summer Clearance Ending",
+        "end_date": "2026-08-31",
+        "hide_on_complete": true
+      }
     },
     "header": {
       "type": "header",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "nav-1": { "type": "nav_link", "settings": { "label": "Shop All", "link": "/collections/all" } },
+        "nav-2": { "type": "nav_link", "settings": { "label": "Bestsellers", "link": "/collections/bestsellers" } },
+        "nav-3": { "type": "nav_link", "settings": { "label": "Shop By Category", "link": "/collections/all", "enable_mega": true } },
+        "card-1": { "type": "mega_card", "settings": { "title": "Sleep Masks", "link": "/collections/sleep-masks" } },
+        "card-2": { "type": "mega_card", "settings": { "title": "Pillowcases", "link": "/collections/pillowcases" } },
+        "card-3": { "type": "mega_card", "settings": { "title": "Sleepwear", "link": "/collections/sleepwear" } },
+        "card-4": { "type": "mega_card", "settings": { "title": "Bundle & Save", "link": "/collections/bundles" } },
+        "nav-4": { "type": "nav_link", "settings": { "label": "Sale", "link": "/collections/sale" } }
+      },
+      "block_order": ["nav-1", "nav-2", "nav-3", "card-1", "card-2", "card-3", "card-4", "nav-4"]
     }
   },
   "order": ["announcement-bar", "countdown-bar", "header"]

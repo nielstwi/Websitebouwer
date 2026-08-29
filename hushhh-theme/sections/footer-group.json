@@ -4,7 +4,44 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "settings": {}
+      "settings": {
+        "about_text": "Thoughtfully designed sleepwear and sleep essentials, crafted without compromise.",
+        "newsletter_heading": "Stay in touch",
+        "newsletter_text": "Sign up to receive our latest offers by email. Subscribers get exclusive access to new arrivals and sale previews."
+      },
+      "blocks": {
+        "col-1": {
+          "type": "link_column",
+          "settings": {
+            "title": "Company",
+            "link_1_label": "About Us", "link_1_url": "/pages/about",
+            "link_2_label": "Reviews", "link_2_url": "/pages/reviews",
+            "link_3_label": "Stockist & In Store", "link_3_url": "/pages/stockists",
+            "link_4_label": "Careers", "link_4_url": "/pages/careers"
+          }
+        },
+        "col-2": {
+          "type": "link_column",
+          "settings": {
+            "title": "Customer Service",
+            "link_1_label": "FAQs", "link_1_url": "/pages/faq",
+            "link_2_label": "Terms of Service", "link_2_url": "/policies/terms-of-service",
+            "link_3_label": "Shipping Policy", "link_3_url": "/policies/shipping-policy",
+            "link_4_label": "Return & Refund Policy", "link_4_url": "/policies/refund-policy"
+          }
+        },
+        "col-3": {
+          "type": "link_column",
+          "settings": {
+            "title": "Explore",
+            "link_1_label": "Shop All", "link_1_url": "/collections/all",
+            "link_2_label": "Bestsellers", "link_2_url": "/collections/bestsellers",
+            "link_3_label": "Bundles", "link_3_url": "/collections/bundles",
+            "link_4_label": "Contact", "link_4_url": "/pages/contact"
+          }
+        }
+      },
+      "block_order": ["col-1", "col-2", "col-3"]
     }
   },
   "order": ["footer"]

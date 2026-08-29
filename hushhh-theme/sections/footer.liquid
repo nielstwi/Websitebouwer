@@ -38,7 +38,7 @@
     </div>
 
     <div class="footer-bottom">
-      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ settings.logo_text | default: shop.name }}. All rights reserved.</span>
       <div class="footer-bottom__payments">
         {%- for type in shop.enabled_payment_types -%}
           {{ type | payment_type_svg_tag: class: 'icon' }}
