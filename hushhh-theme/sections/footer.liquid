@@ -1,0 +1,117 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>{{ settings.logo_text | default: shop.name }}</h4>
+        {% if section.settings.about_text != blank %}
+          <div style="font-size:13px; opacity:.75; max-width:280px;">{{ section.settings.about_text }}</div>
+        {% endif %}
+      </div>
+
+      {% for block in section.blocks %}
+        {% if block.type == 'link_column' %}
+          <div {{ block.shopify_attributes }}>
+            <h4>{{ block.settings.title }}</h4>
+            <ul>
+              {% for i in (1..6) %}
+                {% assign label_key = 'link_' | append: i | append: '_label' %}
+                {% assign url_key = 'link_' | append: i | append: '_url' %}
+                {% if block.settings[label_key] != blank %}
+                  <li><a href="{{ block.settings[url_key] | default: '#' }}">{{ block.settings[label_key] }}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      <div>
+        <h4>{{ section.settings.newsletter_heading }}</h4>
+        <div style="font-size:13px; opacity:.75; max-width:280px; margin-bottom:6px;">{{ section.settings.newsletter_text }}</div>
+        {% form 'customer', id: 'FooterNewsletterForm', class: 'newsletter-form', data-newsletter-form: '' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter.placeholder' | t }}" required>
+          <button type="submit">{{ 'general.newsletter.submit' | t }}</button>
+          <span class="visually-hidden" data-newsletter-message hidden>{{ 'general.newsletter.success' | t }}</span>
+        {% endform %}
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+      <div class="footer-bottom__payments">
+        {%- for type in shop.enabled_payment_types -%}
+          {{ type | payment_type_svg_tag: class: 'icon' }}
+        {%- endfor -%}
+      </div>
+      <div style="display:flex; gap:14px;">
+        {% if settings.social_instagram_link != blank %}<a href="{{ settings.social_instagram_link }}" aria-label="Instagram">IG</a>{% endif %}
+        {% if settings.social_facebook_link != blank %}<a href="{{ settings.social_facebook_link }}" aria-label="Facebook">FB</a>{% endif %}
+        {% if settings.social_tiktok_link != blank %}<a href="{{ settings.social_tiktok_link }}" aria-label="TikTok">TT</a>{% endif %}
+        {% if settings.social_pinterest_link != blank %}<a href="{{ settings.social_pinterest_link }}" aria-label="Pinterest">PI</a>{% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "about_text", "label": "About text", "default": "Thoughtfully designed sleepwear and sleep essentials, crafted without compromise." },
+    { "type": "text", "id": "newsletter_heading", "label": "Newsletter heading", "default": "Stay in touch" },
+    { "type": "textarea", "id": "newsletter_text", "label": "Newsletter text", "default": "Sign up to receive our latest offers by email. Subscribers get exclusive access to new arrivals and sale previews." }
+  ],
+  "blocks": [
+    {
+      "type": "link_column",
+      "name": "Link column",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Column title", "default": "Company" },
+        { "type": "text", "id": "link_1_label", "label": "Link 1 label", "default": "About us" },
+        { "type": "url", "id": "link_1_url", "label": "Link 1 URL" },
+        { "type": "text", "id": "link_2_label", "label": "Link 2 label", "default": "Reviews" },
+        { "type": "url", "id": "link_2_url", "label": "Link 2 URL" },
+        { "type": "text", "id": "link_3_label", "label": "Link 3 label" },
+        { "type": "url", "id": "link_3_url", "label": "Link 3 URL" },
+        { "type": "text", "id": "link_4_label", "label": "Link 4 label" },
+        { "type": "url", "id": "link_4_url", "label": "Link 4 URL" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "link_column",
+        "settings": {
+          "title": "Company",
+          "link_1_label": "About Us", "link_1_url": "/pages/about",
+          "link_2_label": "Reviews", "link_2_url": "/pages/reviews",
+          "link_3_label": "Stockist & In Store", "link_3_url": "/pages/stockists",
+          "link_4_label": "Careers", "link_4_url": "/pages/careers"
+        }
+      },
+      {
+        "type": "link_column",
+        "settings": {
+          "title": "Customer Service",
+          "link_1_label": "FAQs", "link_1_url": "/pages/faq",
+          "link_2_label": "Terms of Service", "link_2_url": "/policies/terms-of-service",
+          "link_3_label": "Shipping Policy", "link_3_url": "/policies/shipping-policy",
+          "link_4_label": "Return & Refund Policy", "link_4_url": "/policies/refund-policy"
+        }
+      },
+      {
+        "type": "link_column",
+        "settings": {
+          "title": "Explore",
+          "link_1_label": "Shop All", "link_1_url": "/collections/all",
+          "link_2_label": "Bestsellers", "link_2_url": "/collections/bestsellers",
+          "link_3_label": "Bundles", "link_3_url": "/collections/bundles",
+          "link_4_label": "Contact", "link_4_url": "/pages/contact"
+        }
+      }
+    ]
+  }
+}
+{% endschema %}

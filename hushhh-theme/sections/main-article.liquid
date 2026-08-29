@@ -1,0 +1,32 @@
+<div class="page-content">
+  <a href="{{ blog.url }}" style="font-size:12px; text-transform:uppercase; letter-spacing:.05em;">&larr; {{ 'blogs.article.back_to_blog' | t }}</a>
+  <h1>{{ article.title }}</h1>
+  <p style="opacity:.6; font-size:13px;">{{ article.published_at | date: '%B %d, %Y' }} &middot; {{ article.author }}</p>
+  {% if article.image %}
+    <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}" style="margin: 24px 0; border-radius:4px;">
+  {% endif %}
+  <div class="rte">{{ article.content }}</div>
+
+  {% if blog.comments_enabled? %}
+    <div style="margin-top:40px;">
+      <h3>{{ article.comments_count }} comments</h3>
+      {% for comment in article.comments %}
+        <div style="border-bottom:1px solid var(--color-border); padding:12px 0;">
+          <strong>{{ comment.author }}</strong>
+          <div>{{ comment.content }}</div>
+        </div>
+      {% endfor %}
+      {% form 'new_comment', article %}
+        {% if form.posted_successfully? %}<div class="form-message form-message--success">Comment posted!</div>{% endif %}
+        <div class="form-field"><label>Name</label><input type="text" name="comment[author]" required></div>
+        <div class="form-field"><label>Email</label><input type="email" name="comment[email]" required></div>
+        <div class="form-field"><label>Comment</label><textarea name="comment[body]" rows="4" required></textarea></div>
+        <button type="submit" class="btn">Post comment</button>
+      {% endform %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}

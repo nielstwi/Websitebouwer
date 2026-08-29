@@ -1,0 +1,118 @@
+<header class="site-header" data-section-id="{{ section.id }}" data-section-type="header">
+  <div class="site-header__inner">
+    <button class="mobile-nav-toggle" data-mobile-nav-toggle aria-label="Open menu">
+      <svg class="icon" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+
+    <nav class="site-nav" aria-label="Main menu">
+      {% for block in section.blocks %}
+        {% if block.type == 'nav_link' %}
+          <div class="menu__item" {{ block.shopify_attributes }}>
+            <a class="site-nav__link" href="{{ block.settings.link | default: '#' }}">{{ block.settings.label }}</a>
+            {% if block.settings.enable_mega %}
+              <div class="header__dropdown">
+                {% assign mega_fallbacks = 'nav-sleepmasks.jpg,nav-pillowcases.jpg,nav-sleepwear.jpg,nav-bundles.jpg' | split: ',' %}
+                {% assign mega_index = 0 %}
+                {% for card in section.blocks %}
+                  {% if card.type == 'mega_card' %}
+                    <a href="{{ card.settings.link | default: '#' }}" class="header__dropdown__image" {{ card.shopify_attributes }}>
+                      <div class="header__dropdown__image__holder">
+                        {% if card.settings.image %}
+                          <img src="{{ card.settings.image | image_url: width: 500 }}" alt="{{ card.settings.title | escape }}" loading="lazy" width="500" height="500">
+                        {% else %}
+                          {% assign fallback = mega_fallbacks[mega_index] | default: mega_fallbacks[0] %}
+                          <img src="{{ fallback | asset_url }}" alt="{{ card.settings.title | escape }}" loading="lazy" width="500" height="500">
+                        {% endif %}
+                        <div class="hero__content__wrapper">
+                          <h3 class="hero__title">{{ card.settings.title }}</h3>
+                        </div>
+                      </div>
+                    </a>
+                    {% assign mega_index = mega_index | plus: 1 %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </nav>
+
+    <div class="site-header__logo">
+      <a href="{{ routes.root_url }}">
+        {% if settings.logo %}
+          <img src="{{ settings.logo | image_url: width: 400 }}" alt="{{ shop.name }}" width="400" height="120">
+        {% else %}
+          {{ settings.logo_text | default: shop.name }}
+        {% endif %}
+      </a>
+    </div>
+
+    <div class="site-header__icons">
+      <a href="{{ routes.search_url }}" aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </a>
+      <a href="{{ routes.account_url }}" aria-label="Account">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+      </a>
+      <a href="{{ routes.cart_url }}" aria-label="Cart" data-cart-drawer-toggle>
+        <svg class="icon" viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-count" data-cart-count>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile-nav" data-mobile-nav-panel>
+    <div class="mobile-nav__header">
+      <span>{{ settings.logo_text | default: shop.name }}</span>
+      <button data-mobile-nav-close aria-label="Close menu">&times;</button>
+    </div>
+    <nav>
+      {% for block in section.blocks %}
+        {% if block.type == 'nav_link' %}
+          <a href="{{ block.settings.link | default: '#' }}">{{ block.settings.label }}</a>
+        {% endif %}
+      {% endfor %}
+      <a href="{{ routes.account_url }}">Account</a>
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Menu link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Menu item" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "checkbox", "id": "enable_mega", "label": "Show image dropdown (mega menu) under this link", "default": false }
+      ]
+    },
+    {
+      "type": "mega_card",
+      "name": "Mega menu image card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Category" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "nav_link", "settings": { "label": "Shop All", "link": "/collections/all" } },
+      { "type": "nav_link", "settings": { "label": "Bestsellers", "link": "/collections/bestsellers" } },
+      { "type": "nav_link", "settings": { "label": "Shop By Category", "link": "/collections/all", "enable_mega": true } },
+      { "type": "mega_card", "settings": { "title": "Sleep Masks", "link": "/collections/sleep-masks" } },
+      { "type": "mega_card", "settings": { "title": "Pillowcases", "link": "/collections/pillowcases" } },
+      { "type": "mega_card", "settings": { "title": "Sleepwear", "link": "/collections/sleepwear" } },
+      { "type": "mega_card", "settings": { "title": "Bundle & Save", "link": "/collections/bundles" } },
+      { "type": "nav_link", "settings": { "label": "Sale", "link": "/collections/sale" } }
+    ]
+  }
+}
+{% endschema %}

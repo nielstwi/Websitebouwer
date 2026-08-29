@@ -1,0 +1,22 @@
+<div class="page-content">
+  <h1>{{ 'customer.addresses.title' | t }}</h1>
+  <a href="{{ routes.account_url }}">&larr; {{ 'customer.account.return' | t }}</a>
+
+  {% for address in customer.addresses %}
+    <div style="border:1px solid var(--color-border); padding:16px; margin:16px 0; border-radius:4px;">
+      <p>{{ address | format_address }}</p>
+      {% if address == customer.default_address %}<span class="badge">{{ 'customer.addresses.default' | t }}</span>{% endif %}
+    </div>
+  {% endfor %}
+
+  {% form 'customer_address', customer.new_address %}
+    <h3>{{ 'customer.addresses.add_new' | t }}</h3>
+    <div class="form-field"><label>First name</label><input type="text" name="address[first_name]"></div>
+    <div class="form-field"><label>Last name</label><input type="text" name="address[last_name]"></div>
+    <div class="form-field"><label>Address</label><input type="text" name="address[address1]" required></div>
+    <div class="form-field"><label>City</label><input type="text" name="address[city]" required></div>
+    <div class="form-field"><label>Postal / ZIP code</label><input type="text" name="address[zip]"></div>
+    <div class="form-field"><label>Country</label><input type="text" name="address[country]"></div>
+    <button type="submit" class="btn">{{ 'customer.addresses.add' | t }}</button>
+  {% endform %}
+</div>

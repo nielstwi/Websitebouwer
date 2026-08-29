@@ -1,0 +1,32 @@
+{%- if section.settings.enable -%}
+<div class="countdown-bar"
+  data-countdown
+  data-end-date="{{ section.settings.end_date }}"
+  data-end-time="23:59:59"
+  data-hide-on-complete="{{ section.settings.hide_on_complete }}">
+  <div class="container countdown-bar__inner">
+    <div class="countdown-bar__label"><strong>{{ section.settings.label }}</strong></div>
+    <div class="countdown-digits">
+      <div class="countdown-digit-group"><span class="countdown-digit" data-days>00</span><span class="countdown-label">Days</span></div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-digit-group"><span class="countdown-digit" data-hours>00</span><span class="countdown-label">Hrs</span></div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-digit-group"><span class="countdown-digit" data-minutes>00</span><span class="countdown-label">Min</span></div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-digit-group"><span class="countdown-digit" data-seconds>00</span><span class="countdown-label">Sec</span></div>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Countdown bar",
+  "settings": [
+    { "type": "checkbox", "id": "enable", "label": "Enable countdown bar", "default": true },
+    { "type": "text", "id": "label", "label": "Label", "default": "Summer Clearance Ending" },
+    { "type": "text", "id": "end_date", "label": "End date (YYYY-MM-DD)", "default": "2026-08-31" },
+    { "type": "checkbox", "id": "hide_on_complete", "label": "Hide automatically when timer ends", "default": true }
+  ]
+}
+{% endschema %}

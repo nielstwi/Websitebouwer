@@ -1,0 +1,63 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {% if settings.favicon %}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+  {% endif %}
+
+  <title>
+    {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  {{ settings.type_header_font | font_face: font_display: 'swap' }}
+  {{ settings.type_body_font | font_face: font_display: 'swap' }}
+
+  {%- style -%}
+    :root {
+      --color-background: {{ settings.color_background }};
+      --color-text: {{ settings.color_text }};
+      --color-secondary-bg: {{ settings.color_secondary_background }};
+      --color-border: {{ settings.color_border }};
+      --color-button-bg: {{ settings.color_button_background }};
+      --color-button-text: {{ settings.color_button_text }};
+      --color-sale: {{ settings.color_sale }};
+      --color-badge-bg: {{ settings.color_badge_background }};
+      --color-badge-text: {{ settings.color_badge_text }};
+      --color-rating: {{ settings.color_rating }};
+      --font-header-family: {{ settings.type_header_font.family }}, serif;
+      --font-body-family: {{ settings.type_body_font.family }}, sans-serif;
+      --font-header-scale: {{ settings.type_header_scale | divided_by: 100.0 }};
+      --font-body-scale: {{ settings.type_body_scale | divided_by: 100.0 }};
+      --page-width: {{ settings.page_width }}px;
+      --logo-width: {{ settings.logo_width }}px;
+      --btn-radius: {% if settings.button_style == 'pill' %}999px{% elsif settings.button_style == 'rounded' %}6px{% else %}0px{% endif %};
+    }
+  {%- endstyle -%}
+
+  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+  {{ content_for_header }}
+</head>
+<body id="{{ page_title | handle }}" class="template-{{ template.name }}">
+  <a class="visually-hidden" href="#MainContent">Skip to content</a>
+
+  {% sections 'header-group' %}
+
+  <main id="MainContent" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% sections 'footer-group' %}
+
+  {% section 'cart-drawer' %}
+</body>
+</html>

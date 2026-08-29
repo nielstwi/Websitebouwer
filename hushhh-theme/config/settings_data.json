@@ -1,0 +1,33 @@
+{
+  "current": {
+    "logo_width": 140,
+    "logo_text": "HUSHHH",
+    "color_background": "#FFFFFF",
+    "color_text": "#1A1A1A",
+    "color_secondary_background": "#F5F3EF",
+    "color_border": "#E5E2DC",
+    "color_button_background": "#111111",
+    "color_button_text": "#FFFFFF",
+    "color_sale": "#C8102E",
+    "color_badge_background": "#111111",
+    "color_badge_text": "#FFFFFF",
+    "color_rating": "#00B67A",
+    "type_header_font": "bodonimoda_n4",
+    "type_header_scale": 100,
+    "type_body_font": "figtree_n4",
+    "type_body_scale": 100,
+    "page_width": 1400,
+    "button_style": "square",
+    "show_sale_badge": true,
+    "show_vendor": true,
+    "show_color_swatches": true,
+    "enable_quick_add": true,
+    "cart_type": "drawer",
+    "cart_show_shipping_bar": true,
+    "cart_shipping_threshold": "75",
+    "social_instagram_handle": "@hushhh"
+  },
+  "presets": {
+    "HUSHHH Default": {}
+  }
+}

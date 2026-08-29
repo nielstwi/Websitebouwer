@@ -1,0 +1,262 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "HUSHHH",
+    "theme_version": "1.0.0",
+    "theme_author": "Custom build",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Logo & favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image",
+        "info": "Leave empty to use the text logo below. Recommended: 400 x 120px, transparent PNG/SVG."
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 60,
+        "max": 260,
+        "step": 5,
+        "unit": "px",
+        "label": "Logo width",
+        "default": 140
+      },
+      {
+        "type": "text",
+        "id": "logo_text",
+        "label": "Text logo",
+        "default": "HUSHHH",
+        "info": "Used when no logo image is uploaded."
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Base"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#1A1A1A"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_background",
+        "label": "Secondary background (footer, sections)",
+        "default": "#F5F3EF"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Borders",
+        "default": "#E5E2DC"
+      },
+      {
+        "type": "header",
+        "content": "Buttons"
+      },
+      {
+        "type": "color",
+        "id": "color_button_background",
+        "label": "Primary button background",
+        "default": "#111111"
+      },
+      {
+        "type": "color",
+        "id": "color_button_text",
+        "label": "Primary button text",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "header",
+        "content": "Sale & badges"
+      },
+      {
+        "type": "color",
+        "id": "color_sale",
+        "label": "Sale price / discount text",
+        "default": "#C8102E"
+      },
+      {
+        "type": "color",
+        "id": "color_badge_background",
+        "label": "Badge background (SALE, NEW, GIFT)",
+        "default": "#111111"
+      },
+      {
+        "type": "color",
+        "id": "color_badge_text",
+        "label": "Badge text",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "header",
+        "content": "Trust / rating"
+      },
+      {
+        "type": "color",
+        "id": "color_rating",
+        "label": "Star rating color",
+        "default": "#00B67A"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "label": "Heading font",
+        "default": "bodonimoda_n4"
+      },
+      {
+        "type": "range",
+        "id": "type_header_scale",
+        "min": 100,
+        "max": 150,
+        "step": 5,
+        "unit": "%",
+        "label": "Heading size scale",
+        "default": 100
+      },
+      {
+        "type": "header",
+        "content": "Body text"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Body font",
+        "default": "figtree_n4"
+      },
+      {
+        "type": "range",
+        "id": "type_body_scale",
+        "min": 90,
+        "max": 130,
+        "step": 5,
+        "unit": "%",
+        "label": "Body size scale",
+        "default": 100
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "min": 1000,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "label": "Page width",
+        "default": 1400
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Button corners",
+        "options": [
+          { "value": "square", "label": "Square" },
+          { "value": "rounded", "label": "Rounded" },
+          { "value": "pill", "label": "Pill" }
+        ],
+        "default": "square"
+      }
+    ]
+  },
+  {
+    "name": "Product cards",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_sale_badge",
+        "label": "Show sale badge on discounted products",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show product vendor / collection name",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_color_swatches",
+        "label": "Show color swatches on product cards",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_quick_add",
+        "label": "Enable quick add to cart",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Add to cart behaviour",
+        "options": [
+          { "value": "drawer", "label": "Open cart drawer" },
+          { "value": "page", "label": "Go to cart page" }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_shipping_bar",
+        "label": "Show free shipping progress bar in cart",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_shipping_threshold",
+        "label": "Free shipping threshold (shop currency, e.g. 75)",
+        "default": "75"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "text", "id": "social_instagram_handle", "label": "Instagram handle", "default": "@hushhh" },
+      { "type": "url", "id": "social_instagram_link", "label": "Instagram URL" },
+      { "type": "url", "id": "social_facebook_link", "label": "Facebook URL" },
+      { "type": "url", "id": "social_tiktok_link", "label": "TikTok URL" },
+      { "type": "url", "id": "social_pinterest_link", "label": "Pinterest URL" }
+    ]
+  }
+]

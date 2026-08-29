@@ -1,0 +1,212 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-slideshow",
+      "settings": { "autoplay": true, "autoplay_speed": 5000 },
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "End of Summer Clearance",
+            "title": "Last Chance For These Items",
+            "description": "Limited stock available. Ends August 31st.",
+            "button_label": "Shop The Sale",
+            "button_link": "/pages/sale"
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "New In",
+            "title": "The Scallop Collection",
+            "description": "One collection, two fabrics. Silk and TENCEL™ sleepwear, sleep masks, and pillowcases. Each finished with a delicate scallop edge.",
+            "button_label": "Shop Scallop",
+            "button_link": "/collections/all"
+          }
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {
+            "title": "The Pointelle Collection",
+            "description": "Featuring a mix of easy-to-wear shapes to lounge, layer and sleep in. This is comfort that feels as good as it looks.",
+            "button_label": "Shop Pointelle",
+            "button_link": "/collections/all"
+          }
+        }
+      },
+      "block_order": ["slide-1", "slide-2", "slide-3"]
+    },
+    "bestsellers": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Bestsellers",
+        "view_all_label": "View All Bestsellers",
+        "view_all_link": "/collections/bestsellers",
+        "layout": "grid",
+        "background": "none",
+        "product_limit": 5
+      },
+      "blocks": {
+        "p1": { "type": "manual_product", "settings": { "title": "Deep Sleep Mask", "vendor": "HUSHHH", "price": 45, "compare_at_price": 56, "image_fallback": "bestseller-deep-sleep-mask.jpg" } },
+        "p2": { "type": "manual_product", "settings": { "title": "Jersey Sleep Set", "vendor": "HUSHHH", "price": 59, "compare_at_price": 74, "image_fallback": "bestseller-jersey-sleep-set.jpg" } },
+        "p3": { "type": "manual_product", "settings": { "title": "Pointelle Cami and Short Set", "vendor": "HUSHHH", "price": 60, "image_fallback": "bestseller-pointelle-cami-short.jpg" } },
+        "p4": { "type": "manual_product", "settings": { "title": "Premium Silk Pillowcase", "vendor": "HUSHHH", "price": 54, "compare_at_price": 68, "image_fallback": "bestseller-silk-pillowcase.jpg" } },
+        "p5": { "type": "manual_product", "settings": { "title": "Cheeky Short Set", "vendor": "HUSHHH", "price": 80, "image_fallback": "bestseller-cheeky-short-set.jpg" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "p5"]
+    },
+    "sleep-beautifully": {
+      "type": "ugc-gallery",
+      "settings": { "heading": "Sleep Beautifully" },
+      "blocks": {
+        "g1": { "type": "image", "settings": { "image_fallback": "gallery-1.jpg", "show_play_icon": true } },
+        "g2": { "type": "image", "settings": { "image_fallback": "gallery-2.jpg" } },
+        "g3": { "type": "image", "settings": { "image_fallback": "gallery-3.jpg", "show_play_icon": true } },
+        "g4": { "type": "image", "settings": { "image_fallback": "gallery-4.jpg" } },
+        "g5": { "type": "image", "settings": { "image_fallback": "gallery-5.jpg" } }
+      },
+      "block_order": ["g1", "g2", "g3", "g4", "g5"]
+    },
+    "silk-vs-sleepwear": {
+      "type": "image-with-text",
+      "blocks": {
+        "panel-1": {
+          "type": "panel",
+          "settings": {
+            "title": "Premium Silk Pillowcase",
+            "description": "Reduce overnight tangles and support smoother skin and hair.",
+            "button_label": "Shop Pillowcases",
+            "link": "/collections/pillowcases",
+            "image_fallback": "banner-silk-pillowcase.jpg"
+          }
+        },
+        "panel-2": {
+          "type": "panel",
+          "settings": {
+            "title": "Premium Sleepwear",
+            "description": "Combining elegance and comfort for effortless everyday luxury.",
+            "button_label": "Shop Sleepwear",
+            "link": "/collections/sleepwear",
+            "image_fallback": "banner-premium-sleepwear.jpg"
+          }
+        }
+      },
+      "block_order": ["panel-1", "panel-2"]
+    },
+    "trust": {
+      "type": "trust-strip",
+      "blocks": {
+        "t1": { "type": "item", "settings": { "quote": "My skin and hair love this pillowcase.", "source": "Verified Buyer" } },
+        "t2": { "type": "item", "settings": { "quote": "So soft and comfortable, my favourite purchase.", "source": "Verified Buyer" } },
+        "t3": { "type": "item", "settings": { "quote": "Fast shipping and beautiful packaging.", "source": "Verified Buyer" } },
+        "t4": { "type": "item", "settings": { "quote": "Worth every penny, will buy again.", "source": "Verified Buyer" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"]
+    },
+    "sleep-masks-banner": {
+      "type": "promo-banner",
+      "settings": {
+        "align": "left",
+        "eyebrow": "BESTSELLER",
+        "title": "Silk Sleep Masks",
+        "description": "Beautifully soft and lightweight, blocks out light and reduces pressure on your eyes.",
+        "button_label": "Shop Sleep Masks",
+        "button_link": "/collections/sleep-masks",
+        "image_fallback": "banner-silk-sleep-masks.jpg"
+      }
+    },
+    "sleepwear-seen-in": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Sleepwear you want to be seen in",
+        "view_all_label": "View All",
+        "view_all_link": "/collections/sleepwear",
+        "layout": "grid",
+        "background": "none",
+        "product_limit": 5
+      },
+      "blocks": {
+        "s1": { "type": "manual_product", "settings": { "title": "Long Premium Silk PJ Set", "vendor": "HUSHHH", "price": 249, "compare_at_price": 275, "image_fallback": "sleepwear-1-long-silk-pj.jpg" } },
+        "s2": { "type": "manual_product", "settings": { "title": "Palmelia Cardigan", "vendor": "HUSHHH", "price": 79, "image_fallback": "sleepwear-2-henley.jpg" } },
+        "s3": { "type": "manual_product", "settings": { "title": "Short Premium Striped PJ Set", "vendor": "HUSHHH", "price": 57, "compare_at_price": 95, "image_fallback": "sleepwear-3-striped-pj.jpg" } },
+        "s4": { "type": "manual_product", "settings": { "title": "Jersey Sleep Set", "vendor": "HUSHHH", "price": 59, "compare_at_price": 74, "image_fallback": "sleepwear-4-jersey.jpg" } },
+        "s5": { "type": "manual_product", "settings": { "title": "Jersey Sleep Set", "vendor": "HUSHHH", "price": 59, "compare_at_price": 74, "image_fallback": "sleepwear-5-jersey.jpg" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4", "s5"]
+    },
+    "bonnets-banner": {
+      "type": "promo-banner",
+      "settings": {
+        "align": "left",
+        "eyebrow": "BESTSELLER",
+        "title": "Silk Bonnets",
+        "description": "Protect your curls and style overnight with a fully adjustable silk bonnet.",
+        "button_label": "Shop Bonnets",
+        "button_link": "/collections/accessories",
+        "image_fallback": "banner-silk-bonnets.jpg"
+      }
+    },
+    "bundles": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Bundles — Up to 50% off",
+        "view_all_label": "View All",
+        "view_all_link": "/collections/bundles",
+        "layout": "grid",
+        "background": "none",
+        "product_limit": 5
+      },
+      "blocks": {
+        "b1": { "type": "manual_product", "settings": { "title": "Ultimate Cooling Sleep Bundle", "vendor": "HUSHHH", "badge": "New", "price": 126, "compare_at_price": 360, "image_fallback": "bundle-1-cooling.jpg" } },
+        "b2": { "type": "manual_product", "settings": { "title": "Scalloped Deep Sleep Bundle", "vendor": "HUSHHH", "price": 105.95, "compare_at_price": 131.95, "image_fallback": "bundle-2-scalloped-deep-sleep.jpg" } },
+        "b3": { "type": "manual_product", "settings": { "title": "Deep Sleep Bundle", "vendor": "HUSHHH", "price": 87, "compare_at_price": 124, "image_fallback": "bundle-3-deep-sleep.jpg" } },
+        "b4": { "type": "manual_product", "settings": { "title": "Cheeky Short Bundle", "vendor": "HUSHHH", "price": 112, "compare_at_price": 125, "image_fallback": "bundle-4-cheeky-short.jpg" } },
+        "b5": { "type": "manual_product", "settings": { "title": "Scalloped Silk Bundle", "vendor": "HUSHHH", "price": 215.95, "compare_at_price": 269.95, "image_fallback": "bundle-5-scalloped-silk.jpg" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5"]
+    },
+    "pillowtalk": {
+      "type": "social-gallery",
+      "settings": {
+        "heading": "#pillowtalk with @hushhh",
+        "link_label": "Shop Now",
+        "link": "/collections/all"
+      },
+      "blocks": {
+        "ig1": { "type": "image", "settings": { "image_fallback": "pillowtalk-1.jpg" } },
+        "ig2": { "type": "image", "settings": { "image_fallback": "pillowtalk-2.jpg" } },
+        "ig3": { "type": "image", "settings": { "image_fallback": "pillowtalk-3.jpg" } },
+        "ig4": { "type": "image", "settings": { "image_fallback": "pillowtalk-4.jpg" } },
+        "ig5": { "type": "image", "settings": { "image_fallback": "pillowtalk-5.jpg" } },
+        "ig6": { "type": "image", "settings": { "image_fallback": "pillowtalk-6.jpg" } },
+        "ig7": { "type": "image", "settings": { "image_fallback": "pillowtalk-7.jpg" } },
+        "ig8": { "type": "image", "settings": { "image_fallback": "pillowtalk-8.jpg" } }
+      },
+      "block_order": ["ig1", "ig2", "ig3", "ig4", "ig5", "ig6", "ig7", "ig8"]
+    },
+    "reviews": {
+      "type": "reviews-grid",
+      "settings": { "rating_label": "Excellent 4.8 out of 5", "review_count": "12,000+" },
+      "blocks": {
+        "r1": { "type": "review", "settings": { "text": "Their customer service is amazing and quick to respond.", "author": "M.", "date": "2 days ago" } },
+        "r2": { "type": "review", "settings": { "text": "My new go-to for gifts. Excellent quality and packaging.", "author": "K.", "date": "5 days ago" } },
+        "r3": { "type": "review", "settings": { "text": "Absolutely obsessed with the pillowcase, my hair feels amazing.", "author": "S.", "date": "1 week ago" } },
+        "r4": { "type": "review", "settings": { "text": "Fast shipping and everything as described. Will buy again.", "author": "R.", "date": "1 week ago" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4"]
+    }
+  },
+  "order": [
+    "hero",
+    "bestsellers",
+    "sleep-beautifully",
+    "silk-vs-sleepwear",
+    "trust",
+    "sleep-masks-banner",
+    "sleepwear-seen-in",
+    "bonnets-banner",
+    "bundles",
+    "pillowtalk",
+    "reviews"
+  ]
+}

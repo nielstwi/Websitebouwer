@@ -1,0 +1,80 @@
+<div class="section-padding" style="{% if section.settings.background == 'secondary' %}background: var(--color-secondary-bg);{% endif %}">
+  <div class="container">
+    <div class="section-heading-row">
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.view_all_link != blank %}
+        <a class="view-all" href="{{ section.settings.view_all_link }}">{{ section.settings.view_all_label }}</a>
+      {% endif %}
+    </div>
+
+    {% if section.settings.collection != blank and section.settings.collection.products.size > 0 %}
+      <div class="{% if section.settings.layout == 'scroll' %}product-grid--scroll{% else %}product-grid{% endif %}">
+        {% for product in section.settings.collection.products limit: section.settings.product_limit %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="{% if section.settings.layout == 'scroll' %}product-grid--scroll{% else %}product-grid{% endif %}">
+        {% for block in section.blocks %}
+          {% if block.type == 'manual_product' %}
+            <div {{ block.shopify_attributes }}>
+              {% render 'product-card-manual',
+                title: block.settings.title,
+                price: block.settings.price,
+                compare_at_price: block.settings.compare_at_price,
+                vendor: block.settings.vendor,
+                link: block.settings.link,
+                image: block.settings.image,
+                image_fallback: block.settings.image_fallback,
+                badge: block.settings.badge
+              %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product grid",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Bestsellers" },
+    { "type": "text", "id": "view_all_label", "label": "View all label", "default": "View All Bestsellers" },
+    { "type": "url", "id": "view_all_link", "label": "View all link" },
+    { "type": "select", "id": "layout", "label": "Layout", "options": [{ "value": "grid", "label": "Grid" }, { "value": "scroll", "label": "Horizontal scroll" }], "default": "grid" },
+    { "type": "select", "id": "background", "label": "Background", "options": [{ "value": "none", "label": "Default" }, { "value": "secondary", "label": "Secondary (tinted)" }], "default": "none" },
+    { "type": "collection", "id": "collection", "label": "Collection", "info": "Pick a real collection to show live products. Leave empty to use the manual product cards below." },
+    { "type": "range", "id": "product_limit", "min": 4, "max": 12, "step": 1, "label": "Products to show (when using a collection)", "default": 5 }
+  ],
+  "blocks": [
+    {
+      "type": "manual_product",
+      "name": "Manual product card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "image_fallback", "label": "Fallback image (theme asset filename)", "info": "Advanced: filename of a bundled image in /assets, used only while no image above is set." },
+        { "type": "text", "id": "vendor", "label": "Vendor / collection label", "default": "HUSHHH" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Product title" },
+        { "type": "text", "id": "badge", "label": "Badge (optional)" },
+        { "type": "number", "id": "price", "label": "Price", "default": 50 },
+        { "type": "number", "id": "compare_at_price", "label": "Compare-at price (optional)" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "manual_product", "settings": { "title": "Deep Sleep Mask", "price": 45, "compare_at_price": 56, "image_fallback": "bestseller-deep-sleep-mask.jpg" } },
+      { "type": "manual_product", "settings": { "title": "Jersey Sleep Set", "price": 59, "compare_at_price": 74, "image_fallback": "bestseller-jersey-sleep-set.jpg" } },
+      { "type": "manual_product", "settings": { "title": "Pointelle Cami and Short Set", "price": 60, "image_fallback": "bestseller-pointelle-cami-short.jpg" } },
+      { "type": "manual_product", "settings": { "title": "Premium Silk Pillowcase", "price": 54, "compare_at_price": 68, "image_fallback": "bestseller-silk-pillowcase.jpg" } },
+      { "type": "manual_product", "settings": { "title": "Cheeky Short Set", "price": 80, "image_fallback": "bestseller-cheeky-short-set.jpg" } }
+    ]
+  },
+  "presets": [
+    { "name": "Product grid" }
+  ]
+}
+{% endschema %}

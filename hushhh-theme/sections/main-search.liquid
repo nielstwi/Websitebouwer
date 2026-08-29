@@ -1,0 +1,27 @@
+<div class="container section-padding">
+  <form action="{{ routes.search_url }}" method="get" role="search" class="search-form" style="max-width:480px; margin: 0 auto 32px;">
+    <div class="form-field">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}">
+    </div>
+    <input type="hidden" name="type" value="product">
+  </form>
+
+  {% if search.performed %}
+    <p style="text-align:center;">{{ 'general.search.results_count' | t: count: search.results_count }}</p>
+    {% if search.results.size > 0 %}
+      <div class="product-grid">
+        {% for item in search.results %}
+          {% if item.object_type == 'product' %}
+            {% render 'product-card', product: item %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state"><p>{{ 'general.search.no_results' | t: terms: search.terms }}</p></div>
+    {% endif %}
+  {% endif %}
+</div>
+
+{% schema %}
+{ "name": "Search", "settings": [] }
+{% endschema %}

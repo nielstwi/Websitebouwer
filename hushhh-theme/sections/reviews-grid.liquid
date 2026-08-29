@@ -1,0 +1,55 @@
+<div class="section-padding">
+  <div class="container">
+    <div class="reviews-summary">
+      <div class="reviews-summary__stars">{% for i in (1..5) %}&#9733;{% endfor %}</div>
+      <div class="reviews-summary__meta"><strong>{{ section.settings.rating_label }}</strong> &middot; Based on {{ section.settings.review_count }} reviews</div>
+    </div>
+    <div class="reviews-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'review' %}
+          <div class="review-card" {{ block.shopify_attributes }}>
+            <div class="review-card__stars">
+              {% for i in (1..5) %}{% if i <= block.settings.rating %}&#9733;{% else %}&#9734;{% endif %}{% endfor %}
+            </div>
+            <p class="review-card__text">&ldquo;{{ block.settings.text }}&rdquo;</p>
+            <div class="review-card__author">{{ block.settings.author }}</div>
+            <div class="review-card__date">{{ block.settings.date }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Reviews grid",
+  "settings": [
+    { "type": "text", "id": "rating_label", "label": "Rating summary label", "default": "Excellent 4.8 out of 5" },
+    { "type": "text", "id": "review_count", "label": "Review count", "default": "12,000+" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "range", "id": "rating", "min": 1, "max": 5, "step": 1, "label": "Rating", "default": 5 },
+        { "type": "textarea", "id": "text", "label": "Review text", "default": "Their customer service is amazing." },
+        { "type": "text", "id": "author", "label": "Author", "default": "Happy Customer" },
+        { "type": "text", "id": "date", "label": "Date", "default": "2 days ago" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "review", "settings": { "text": "Their customer service is amazing and quick to respond.", "author": "M.", "date": "2 days ago" } },
+      { "type": "review", "settings": { "text": "My new go-to for gifts. Excellent quality and packaging.", "author": "K.", "date": "5 days ago" } },
+      { "type": "review", "settings": { "text": "Absolutely obsessed with the pillowcase, my hair feels amazing.", "author": "S.", "date": "1 week ago" } },
+      { "type": "review", "settings": { "text": "Fast shipping and everything as described. Will buy again.", "author": "R.", "date": "1 week ago" } }
+    ]
+  },
+  "presets": [
+    { "name": "Reviews grid" }
+  ]
+}
+{% endschema %}

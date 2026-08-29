@@ -1,0 +1,24 @@
+<div class="container section-padding">
+  <h1>{{ blog.title }}</h1>
+  <div class="product-grid">
+    {% paginate blog.articles by 12 %}
+      {% for article in blog.articles %}
+        <a href="{{ article.url }}" class="product-card">
+          <div class="product-card__media">
+            {% if article.image %}
+              <img src="{{ article.image | image_url: width: 700 }}" alt="{{ article.title | escape }}" loading="lazy" width="700" height="933">
+            {% endif %}
+          </div>
+          <div class="product-card__info">
+            <div class="product-card__title">{{ article.title }}</div>
+            <div class="product-card__vendor">{{ article.published_at | date: '%B %d, %Y' }}</div>
+          </div>
+        </a>
+      {% endfor %}
+    {% endpaginate %}
+  </div>
+</div>
+
+{% schema %}
+{ "name": "Blog", "settings": [] }
+{% endschema %}

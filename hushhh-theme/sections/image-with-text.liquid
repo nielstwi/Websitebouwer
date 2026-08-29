@@ -1,0 +1,70 @@
+<div class="section-padding">
+  <div class="container">
+    <div class="image-with-text">
+      {% for block in section.blocks %}
+        {% if block.type == 'panel' %}
+          <a href="{{ block.settings.link | default: '#' }}" class="image-with-text__panel" {{ block.shopify_attributes }}>
+            {% if block.settings.image %}
+              <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="1200" height="900">
+            {% elsif block.settings.image_fallback %}
+              <img src="{{ block.settings.image_fallback | asset_url }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="1200" height="900">
+            {% endif %}
+            <div class="panel-content">
+              {% if block.settings.kicker != blank %}<div class="kicker">{{ block.settings.kicker }}</div>{% endif %}
+              <h3>{{ block.settings.title }}</h3>
+              {% if block.settings.description != blank %}<p>{{ block.settings.description }}</p>{% endif %}
+              {% if block.settings.button_label != blank %}<span class="btn btn--white btn--small">{{ block.settings.button_label }}</span>{% endif %}
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image with text (2-column)",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "panel",
+      "name": "Panel",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "image_fallback", "label": "Fallback image (theme asset filename)" },
+        { "type": "text", "id": "kicker", "label": "Small label (optional)" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Collection name" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Now" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "panel",
+        "settings": {
+          "title": "Premium Silk Pillowcase",
+          "description": "Reduce overnight tangles and support smoother skin and hair.",
+          "button_label": "Shop Pillowcases",
+          "image_fallback": "banner-silk-pillowcase.jpg"
+        }
+      },
+      {
+        "type": "panel",
+        "settings": {
+          "title": "Premium Sleepwear",
+          "description": "Combining elegance and comfort for effortless everyday luxury.",
+          "button_label": "Shop Sleepwear",
+          "image_fallback": "banner-premium-sleepwear.jpg"
+        }
+      }
+    ]
+  },
+  "presets": [
+    { "name": "Image with text (2-column)" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "show_shipping_accordion": true,
+        "shipping_text": "Free standard shipping on orders over the threshold set in Theme Settings → Cart. Easy 30-day returns on unworn items."
+      }
+    },
+    "you-may-also-like": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "You may also like",
+        "layout": "grid",
+        "background": "secondary",
+        "product_limit": 4
+      },
+      "blocks": {
+        "r1": { "type": "manual_product", "settings": { "title": "Deep Sleep Mask", "vendor": "HUSHHH", "price": 45, "compare_at_price": 56, "image_fallback": "bestseller-deep-sleep-mask.jpg" } },
+        "r2": { "type": "manual_product", "settings": { "title": "Jersey Sleep Set", "vendor": "HUSHHH", "price": 59, "compare_at_price": 74, "image_fallback": "bestseller-jersey-sleep-set.jpg" } },
+        "r3": { "type": "manual_product", "settings": { "title": "Premium Silk Pillowcase", "vendor": "HUSHHH", "price": 54, "compare_at_price": 68, "image_fallback": "bestseller-silk-pillowcase.jpg" } },
+        "r4": { "type": "manual_product", "settings": { "title": "Cheeky Short Set", "vendor": "HUSHHH", "price": 80, "image_fallback": "bestseller-cheeky-short-set.jpg" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4"]
+    }
+  },
+  "order": ["main", "you-may-also-like"]
+}

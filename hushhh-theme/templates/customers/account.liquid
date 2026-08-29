@@ -1,0 +1,31 @@
+<div class="page-content">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h1>{{ 'customer.account.title' | t }}</h1>
+    <a href="{{ routes.account_logout_url }}" class="btn btn--outline btn--small">{{ 'customer.log_out' | t }}</a>
+  </div>
+
+  <h3>{{ 'customer.orders.title' | t }}</h3>
+  {% if customer.orders.size > 0 %}
+    <table class="account-orders-table">
+      <thead><tr><th>{{ 'customer.orders.order_number' | t }}</th><th>{{ 'customer.orders.date' | t }}</th><th>{{ 'customer.orders.payment_status' | t }}</th><th>{{ 'customer.orders.total' | t }}</th></tr></thead>
+      <tbody>
+        {% for order in customer.orders %}
+          <tr>
+            <td><a href="{{ order.customer_url }}">{{ order.name }}</a></td>
+            <td>{{ order.created_at | date: '%B %d, %Y' }}</td>
+            <td>{{ order.financial_status_label }}</td>
+            <td>{{ order.total_price | money }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>{{ 'customer.orders.none' | t }}</p>
+  {% endif %}
+
+  <h3 style="margin-top:32px;">{{ customer.default_address.first_name }} {{ customer.default_address.last_name }}</h3>
+  {% if customer.default_address %}
+    <p>{{ customer.default_address | format_address }}</p>
+  {% endif %}
+  <a href="{{ routes.account_addresses_url }}" class="btn btn--outline btn--small">{{ 'customer.account.view_addresses' | t }}</a>
+</div>

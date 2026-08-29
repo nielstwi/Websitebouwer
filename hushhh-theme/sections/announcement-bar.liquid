@@ -1,0 +1,35 @@
+<div class="announcement-bar">
+  <div class="container">
+    {% for block in section.blocks %}
+      {% if block.type == 'message' %}
+        {% if block.settings.link != blank %}
+          <a href="{{ block.settings.link }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</a>
+        {% else %}
+          <span {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "SHOP SUMMER CLEARANCE SALE — LIMITED TIME OFFER" },
+        { "type": "url", "id": "link", "label": "Link (optional)" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "message", "settings": { "text": "SHOP SUMMER CLEARANCE SALE — LIMITED TIME OFFER" } }
+    ]
+  }
+}
+{% endschema %}

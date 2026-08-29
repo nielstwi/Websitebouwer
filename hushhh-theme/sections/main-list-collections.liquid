@@ -1,0 +1,21 @@
+<div class="container section-padding">
+  <h1>{{ 'collections.general.items_count' | t: count: collections.size }}</h1>
+  <div class="product-grid">
+    {% for collection in collections %}
+      <a href="{{ collection.url }}" class="product-card">
+        <div class="product-card__media">
+          {% if collection.featured_image %}
+            <img src="{{ collection.featured_image | image_url: width: 700 }}" alt="{{ collection.title | escape }}" loading="lazy" width="700" height="933">
+          {% endif %}
+        </div>
+        <div class="product-card__info">
+          <div class="product-card__title">{{ collection.title }}</div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{ "name": "List collections", "settings": [] }
+{% endschema %}

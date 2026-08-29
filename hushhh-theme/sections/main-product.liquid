@@ -1,0 +1,109 @@
+<div class="container section-padding">
+  <div class="pdp">
+    <div class="pdp__gallery">
+      {% if product.media.size > 0 %}
+        <div class="pdp__gallery-main">
+          <img src="{{ product.selected_or_first_available_variant.featured_image | default: product.featured_image | image_url: width: 1200 }}"
+               alt="{{ product.title | escape }}" width="1200" height="1500" id="ProductMainImage-{{ section.id }}">
+        </div>
+        {% if product.media.size > 1 %}
+          <div class="pdp__gallery-thumbs">
+            {% for media in product.media %}
+              <button type="button" class="pdp__thumb" data-pdp-thumb data-image-url="{{ media.preview_image | image_url: width: 1200 }}">
+                <img src="{{ media.preview_image | image_url: width: 200 }}" alt="" width="200" height="250" loading="lazy">
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% else %}
+        <div class="pdp__gallery-main">
+          <img src="{{ 'bestseller-deep-sleep-mask.jpg' | asset_url }}" alt="{{ product.title | escape }}" width="1200" height="1500">
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="pdp__info">
+      {% if settings.show_vendor and product.vendor != blank %}<div class="product-card__vendor">{{ product.vendor }}</div>{% endif %}
+      <h1>{{ product.title | default: 'Sample Product' }}</h1>
+
+      <div class="pdp__price">
+        {% if product.compare_at_price > product.price %}
+          <span class="price--sale">{{ product.price | money }}</span>
+          <span class="compare-at">{{ product.compare_at_price | money }}</span>
+        {% else %}
+          <span>{{ product.price | default: 5000 | money }}</span>
+        {% endif %}
+      </div>
+
+      {% if product.description != blank %}
+        <div class="pdp__description rte">{{ product.description }}</div>
+      {% endif %}
+
+      {% form 'product', product, data-add-to-cart-form: '' %}
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            <div class="pdp__option">
+              <label>{{ option.name }}</label>
+              <div class="pdp__option-values">
+                {% for value in option.values %}
+                  <label class="pdp__option-pill">
+                    <input type="radio" name="option-{{ option.position }}" value="{{ value | escape }}" class="visually-hidden" {% if option.selected_value == value %}checked{% endif %}>
+                    <span>{{ value }}</span>
+                  </label>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        {% endunless %}
+
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        <div class="pdp__quantity">
+          <label for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+          <span class="cart-line__qty">
+            <button type="button" data-qty-minus aria-label="Decrease">&minus;</button>
+            <input type="number" min="1" value="1" name="quantity" id="Quantity-{{ section.id }}" data-qty-input>
+            <button type="button" data-qty-plus aria-label="Increase">&plus;</button>
+          </span>
+        </div>
+
+        <button type="submit" class="btn btn--full" {% unless product.available %}disabled{% endunless %}>
+          {% if product.available %}{{ 'products.product.add_to_cart' | t }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}
+        </button>
+      {% endform %}
+
+      <div class="pdp__trust-icons">
+        <span>&#9993; Free shipping over {{ settings.cart_shipping_threshold | times: 100 | money_without_trailing_zeros }}</span>
+        <span>&#8635; 30-day returns</span>
+        <span>&#9989; Secure checkout</span>
+      </div>
+
+      {% if section.settings.show_shipping_accordion %}
+        <details class="pdp__accordion">
+          <summary>{{ 'products.product.shipping_returns' | t }}</summary>
+          <div>{{ section.settings.shipping_text }}</div>
+        </details>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('click', function (e) {
+    var thumb = e.target.closest('[data-pdp-thumb]');
+    if (thumb) {
+      var main = document.getElementById('ProductMainImage-{{ section.id }}');
+      if (main) main.src = thumb.getAttribute('data-image-url');
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product information",
+  "settings": [
+    { "type": "checkbox", "id": "show_shipping_accordion", "label": "Show shipping & returns accordion", "default": true },
+    { "type": "textarea", "id": "shipping_text", "label": "Shipping & returns text", "default": "Free standard shipping on orders over the threshold set in Theme Settings → Cart. Easy 30-day returns on unworn items." }
+  ]
+}
+{% endschema %}
