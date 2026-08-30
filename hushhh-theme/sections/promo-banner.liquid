@@ -1,0 +1,34 @@
+<div class="promo-banner promo-banner--align-{{ section.settings.align }}">
+  {% if section.settings.image %}
+    <img src="{{ section.settings.image | image_url: width: 1600 }}" alt="{{ section.settings.title | escape }}" loading="lazy" width="1600" height="800">
+  {% elsif section.settings.image_fallback %}
+    <img src="{{ section.settings.image_fallback | asset_url }}" alt="{{ section.settings.title | escape }}" loading="lazy" width="1600" height="800">
+  {% endif %}
+  <div class="promo-banner__content">
+    {% if section.settings.eyebrow != blank %}<div class="promo-banner__eyebrow">{{ section.settings.eyebrow }}</div>{% endif %}
+    <h2>{{ section.settings.title }}</h2>
+    {% if section.settings.description != blank %}<p>{{ section.settings.description }}</p>{% endif %}
+    {% if section.settings.button_label != blank %}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="btn btn--white">{{ section.settings.button_label }}</a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Promo banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "image_fallback", "label": "Fallback image (theme asset filename)" },
+    { "type": "select", "id": "align", "label": "Content alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }], "default": "left" },
+    { "type": "text", "id": "eyebrow", "label": "Small label (optional)", "default": "BESTSELLER" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Silk Sleep Masks" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Beautifully soft and lightweight, blocks out light and reduces pressure on your eyes." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Sleep Masks" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [
+    { "name": "Promo banner" }
+  ]
+}
+{% endschema %}

@@ -1,65 +1,58 @@
-# HUSHHH — Shopify theme (Dawn)
+# HUSHHH — Shopify theme
 
-Basis: het officiële gratis **Dawn**-thema van Shopify (OS 2.0), zoals
-aangeleverd. Opgebouwd naar het Claude Design-mockup "3a — HUSHHH ·
-verkoopstructuur" (homepage, collectie, productpagina, cart drawer, mobiel).
-
-## Wat is gebouwd
-- **Kleuren, typografie, knoppen, badges** — `config/settings_data.json`:
-  exacte kleurtokens uit de mockup (inkt #2d2b2b, oppervlak #eae7e7,
-  accent/sale #7c1405, blush #fff2ef, etc.), lettertype **Archivo** (ook
-  hard geladen via Google Fonts in `layout/theme.liquid`, zodat het altijd
-  het echte merklettertype is), knop-/input-radius 5px, pil-vormige badges,
-  paginabreedte 1440px.
-- **Homepage** (`templates/index.json`) — hero, USP-balk (4 kolommen),
-  Bestsellers, Shop by category, bundelbanner, "Why silk", reviews,
-  "#hushhhnights"-galerij, nieuwsbrief — in dezelfde volgorde en met dezelfde
-  copy als de mockup.
-- **Collectiepagina** (`templates/collection.json`) — categorie-banner,
-  filter-/sorteerbalk, 4-koloms productgrid, FAQ-blok.
-- **Productpagina** (`templates/product.json`) — duimnagel-galerij links,
-  kleurstalen als cirkels, accordions (Size/Wash/Shipping/Materiaal),
-  "Why silk"-blok, reviews, "You may also like".
-- **Cart drawer** — `cart_type: drawer`, kleuren/knoppen/prijskleuren via
-  dezelfde tokens.
-- **Header** — gecentreerd HUSHHH-wordmark (breed getrackt, hoofdletters),
-  nav links, eigen 3-koloms aankondigingsbalk (sale / verzending / 30
-  dagen) — Dawn's eigen balk ondersteunt maar 1 bericht of een carousel,
-  dus daarvoor is één klein eigen sectiebestand toegevoegd
-  (`sections/announcement-3col.liquid`).
-- 3 kleine eigen secties naast Dawn's standaardset (Dawn heeft hier zelf
-  geen equivalent voor): `hushhh-why-silk.liquid`, `hushhh-reviews.liquid`,
-  `hushhh-ugc.liquid`. Alles verder is standaard Dawn.
-
-## Wat je zelf nog moet doen in Shopify Admin
-Dit zijn dingen die **niet in thema-bestanden zitten** (het is winkel-data,
-geen code), dus die kan ik niet vanuit dit repo instellen:
-- **Navigatiemenu** aanmaken onder Admin → Navigatie → `main-menu` met:
-  Sale, Sleep masks, Sleepwear, Bedding, Hair, Bundles.
-- **Collecties aanmaken** (Sleep masks, Pillowcases, Sleepwear, Bedding) en
-  koppelen aan de "Shop by category"-blokken en de Bestsellers-sectie.
-- **Producten toevoegen** — homepage/PLP/PDP tonen dan automatisch je
-  echte assortiment, voorraad en prijzen.
-- **Logo/favicon** — bewust nog niet gedaan, regel je zelf later via
-  Theme Settings → Logo & favicon.
-- Optioneel: `cart_drawer_collection` instellen (Theme Settings → Cart) om
-  de "Add to your order"-upsell-rij in de cart drawer te tonen, zodra er
-  een collectie voor bestaat.
-
-## Nog niet gebouwd / bewuste keuzes
-- De "Frequently bought together"-bundelblok en de dynamische
-  "Free shipping unlocked"-voortgangsbalk uit de mockup zijn niet
-  hardcoded nagebouwd — dat vraagt om app-achtige logica (bundelkorting,
-  verzenddrempel) die niet uit een mockup-screenshot valt te herleiden en
-  standaard geen Dawn-functie is. Kan later als losse stap.
-- Sticky "Add to cart"-balk onderin op mobiel (PDP) is nog niet toegevoegd.
-- Ik heb geen `shopify theme check` kunnen draaien in deze omgeving (geen
-  netwerktoegang tot de Shopify CLI-registry) — controleer dat zelf even
-  met `shopify theme check` voor je live gaat, of upload en check de
-  Theme Editor-preview.
+Gebouwd op basis van de structuur, aanbiedingen en content van de opgegeven
+voorbeeldwinkel, met toestemming van de eigenaar, en herbrand naar **HUSHHH**.
+100% eigen Liquid/CSS/JS-code (Online Store 2.0), dus geen licentieproblemen
+met het originele thema.
 
 ## Installeren
-1. Zip de map `hushhh-theme` (inhoud van deze map, niet de map zelf, in de
-   root van de zip).
+1. Zip de map `hushhh-theme` (inhoud van deze map, niet de map zelf, in de root van de zip).
 2. Shopify Admin → **Online Store → Themes → Add theme → Upload zip file**.
-3. Klik **Customize** om te controleren.
+3. Klik **Customize** om te controleren en aan te passen.
+
+## Wat is 1:1 overgenomen
+- Homepage-opbouw en volgorde exact zoals de screenshots: hero-slideshow met
+  "End of Summer Clearance / Up to 65% Off / Last Chance For These Items",
+  Bestsellers-rij, "Sleep Beautifully" galerij, Silk Pillowcase / Premium
+  Sleepwear banner, vertrouwens-strip, Silk Sleep Masks banner, "Sleepwear
+  you want to be seen in", Silk Bonnets banner, Bundles-rij (tot 50% korting),
+  "#pillowtalk"-social-galerij, reviews-blok.
+- Countdown-timer met dezelfde eind-mechaniek als de live site ("Summer
+  Clearance Ending", instelbare einddatum) — een echte, werkende functie,
+  geen plaatje.
+- Alle 39 gebruikte afbeeldingen zijn de originele bestanden van de
+  voorbeeldwinkel, gedownload en meegeleverd in `/assets`.
+- Product- en bundelnamen/prijzen/kortingspercentages exact zoals in de
+  screenshots en op de live site (Bestsellers- en Bundles-collecties).
+
+## Volledig custom aanpasbaar
+Alles hierboven staat als **losse instelling** in de Theme Editor:
+- Elke sectie (hero-slides, banners, product-kaarten, galerij-afbeeldingen,
+  reviews, countdown-datum, tekst) is een los blok dat je kan bewerken,
+  verwijderen, herschikken of dupliceren — zonder code.
+- Kleuren, logo, lettertypes (headings/body), knopvorm en pagina-breedte
+  zitten in **Theme Settings**.
+- Zodra je eigen Shopify-producten aanmaakt, koppel je een sectie simpelweg
+  aan een echte **collectie** (in plaats van de meegeleverde demo-kaarten) en
+  toont hij automatisch je eigen assortiment, voorraad en prijzen.
+
+## Wat je zelf nog moet doen
+- **Producten toevoegen** in Shopify Admin (of CSV-import) — de homepage
+  toont nu representatieve "demo"-kaarten met de juiste content, die
+  automatisch plaatsmaken voor je echte catalogus zodra je een collectie
+  aan een sectie koppelt.
+- **Kortingscodes / automatische kortingen** instellen onder
+  Admin → Discounts — de UI (badges, countdown, bundelblokken) staat al klaar
+  en werkt naadloos samen met wat je daar instelt.
+- **Logo/favicon** uploaden onder Theme Settings → Logo & favicon.
+- Marketing-apps die de originele site gebruikt (reviews-widget, upsell-apps,
+  loyalty, etc.) zijn géén thema-bestanden — die installeer je zelf via de
+  Shopify App Store; ze werken automatisch mee dankzij `content_for_header`
+  in `layout/theme.liquid`.
+
+## Nog niet 1:1 geverifieerd
+Alleen de **homepage** is 1:1 nagebouwd aan de hand van de twee aangeleverde
+screenshots + de live pagina. Product-, collectie-, cart- en accountpagina's
+zijn in dezelfde stijl (kleuren/typografie/componenten) gebouwd maar niet
+tegen screenshots geverifieerd. Stuur daar losse screenshots van als je wil
+dat ik die ook pixel-precies matchen.

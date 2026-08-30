@@ -1,0 +1,36 @@
+<div class="container section-padding">
+  <div class="collection-header">
+    <h1>{{ collection.title | default: 'All Products' }}</h1>
+    {% if collection.description != blank %}<div class="rte">{{ collection.description }}</div>{% endif %}
+    <p class="collection-count">{{ 'collections.general.items_count' | t: count: collection.products_count }}</p>
+  </div>
+
+  {% paginate collection.products by 24 %}
+    {% if collection.products.size > 0 %}
+      <div class="product-grid">
+        {% for product in collection.products %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <p>{{ 'collections.general.no_products' | t }}</p>
+        <a class="btn btn--outline" href="{{ routes.all_products_collection_url }}">{{ 'cart.general.continue_shopping' | t }}</a>
+      </div>
+    {% endif %}
+
+    {% if paginate.pages > 1 %}
+      <nav class="pagination">
+        {% if paginate.previous %}<a href="{{ paginate.previous.url }}">&larr;</a>{% endif %}
+        {% for part in paginate.parts %}
+          {% if part.is_link %}<a href="{{ part.url }}">{{ part.title }}</a>{% else %}<span class="is-current">{{ part.title }}</span>{% endif %}
+        {% endfor %}
+        {% if paginate.next %}<a href="{{ paginate.next.url }}">&rarr;</a>{% endif %}
+      </nav>
+    {% endif %}
+  {% endpaginate %}
+</div>
+
+{% schema %}
+{ "name": "Collection", "settings": [] }
+{% endschema %}

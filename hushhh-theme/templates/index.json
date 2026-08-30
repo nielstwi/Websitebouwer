@@ -1,400 +1,212 @@
 {
   "sections": {
     "hero": {
-      "type": "image-banner",
+      "type": "hero-slideshow",
+      "settings": { "autoplay": true, "autoplay_speed": 5000 },
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "slide-1": {
+          "type": "slide",
           "settings": {
-            "heading": "Better for your skin, your hair and your temperature.",
-            "heading_size": "h1"
+            "eyebrow": "End of Summer Clearance",
+            "title": "Last Chance For These Items",
+            "description": "Limited stock available. Ends August 31st.",
+            "button_label": "Shop The Sale",
+            "button_link": "/pages/sale"
           }
         },
-        "text": {
-          "type": "text",
+        "slide-2": {
+          "type": "slide",
           "settings": {
-            "text": "Spring sale — 25% off. 22 momme mulberry silk: less friction on skin and hair, and it carries heat away instead of holding it. Ten years in.",
-            "text_style": "body"
+            "eyebrow": "New In",
+            "title": "The Scallop Collection",
+            "description": "One collection, two fabrics. Silk and TENCEL™ sleepwear, sleep masks, and pillowcases. Each finished with a delicate scallop edge.",
+            "button_label": "Shop Scallop",
+            "button_link": "/collections/all"
           }
         },
-        "buttons": {
-          "type": "buttons",
+        "slide-3": {
+          "type": "slide",
           "settings": {
-            "button_label_1": "Shop the sale",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": false,
-            "button_label_2": "Shop all silk",
-            "button_link_2": "shopify://collections/all",
-            "button_style_secondary_2": true
+            "title": "The Pointelle Collection",
+            "description": "Featuring a mix of easy-to-wear shapes to lounge, layer and sleep in. This is comfort that feels as good as it looks.",
+            "button_label": "Shop Pointelle",
+            "button_link": "/collections/all"
           }
         }
       },
-      "block_order": [
-        "heading",
-        "text",
-        "buttons"
-      ],
-      "settings": {
-        "image_overlay_opacity": 0,
-        "image_height": "large",
-        "desktop_content_position": "bottom-left",
-        "show_text_box": true,
-        "image_behavior": "none",
-        "desktop_content_alignment": "left",
-        "color_scheme": "scheme-1",
-        "mobile_content_alignment": "left",
-        "stack_images_on_mobile": false,
-        "show_text_below": true
-      }
-    },
-    "usp_strip": {
-      "type": "multicolumn",
-      "blocks": {
-        "usp-1": {
-          "type": "column",
-          "settings": {
-            "title": "22 momme silk",
-            "text": "<p>Denser than the usual 19</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "usp-2": {
-          "type": "column",
-          "settings": {
-            "title": "Kind to skin",
-            "text": "<p>Less friction, less moisture loss</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "usp-3": {
-          "type": "column",
-          "settings": {
-            "title": "Kind to hair",
-            "text": "<p>Fewer tangles, less frizz</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "usp-4": {
-          "type": "column",
-          "settings": {
-            "title": "Temperature regulating",
-            "text": "<p>Cool in summer, warm in winter</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "usp-1",
-        "usp-2",
-        "usp-3",
-        "usp-4"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 4,
-        "column_alignment": "left",
-        "background_style": "none",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
+      "block_order": ["slide-1", "slide-2", "slide-3"]
     },
     "bestsellers": {
       "type": "featured-collection",
       "settings": {
-        "title": "Bestsellers",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "link",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "portrait",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 0
-      }
-    },
-    "categories": {
-      "type": "collection-list",
-      "blocks": {
-        "cat-1": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "cat-2": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "cat-3": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "cat-4": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        }
+        "heading": "Bestsellers",
+        "view_all_label": "View All Bestsellers",
+        "view_all_link": "/collections/bestsellers",
+        "layout": "grid",
+        "background": "none",
+        "product_limit": 5
       },
-      "block_order": [
-        "cat-1",
-        "cat-2",
-        "cat-3",
-        "cat-4"
-      ],
-      "settings": {
-        "title": "Shop by category",
-        "heading_size": "h2",
-        "image_ratio": "square",
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "show_view_all": true,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 0
-      }
+      "blocks": {
+        "p1": { "type": "manual_product", "settings": { "title": "Deep Sleep Mask", "vendor": "HUSHHH", "price": 45, "compare_at_price": 56, "image_fallback": "bestseller-deep-sleep-mask.jpg" } },
+        "p2": { "type": "manual_product", "settings": { "title": "Jersey Sleep Set", "vendor": "HUSHHH", "price": 59, "compare_at_price": 74, "image_fallback": "bestseller-jersey-sleep-set.jpg" } },
+        "p3": { "type": "manual_product", "settings": { "title": "Pointelle Cami and Short Set", "vendor": "HUSHHH", "price": 60, "image_fallback": "bestseller-pointelle-cami-short.jpg" } },
+        "p4": { "type": "manual_product", "settings": { "title": "Premium Silk Pillowcase", "vendor": "HUSHHH", "price": 54, "compare_at_price": 68, "image_fallback": "bestseller-silk-pillowcase.jpg" } },
+        "p5": { "type": "manual_product", "settings": { "title": "Cheeky Short Set", "vendor": "HUSHHH", "price": 80, "image_fallback": "bestseller-cheeky-short-set.jpg" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "p5"]
     },
-    "bundle": {
+    "sleep-beautifully": {
+      "type": "ugc-gallery",
+      "settings": { "heading": "Sleep Beautifully" },
+      "blocks": {
+        "g1": { "type": "image", "settings": { "image_fallback": "gallery-1.jpg", "show_play_icon": true } },
+        "g2": { "type": "image", "settings": { "image_fallback": "gallery-2.jpg" } },
+        "g3": { "type": "image", "settings": { "image_fallback": "gallery-3.jpg", "show_play_icon": true } },
+        "g4": { "type": "image", "settings": { "image_fallback": "gallery-4.jpg" } },
+        "g5": { "type": "image", "settings": { "image_fallback": "gallery-5.jpg" } }
+      },
+      "block_order": ["g1", "g2", "g3", "g4", "g5"]
+    },
+    "silk-vs-sleepwear": {
       "type": "image-with-text",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "panel-1": {
+          "type": "panel",
           "settings": {
-            "heading": "The bed set, complete.",
-            "heading_size": "h1"
+            "title": "Premium Silk Pillowcase",
+            "description": "Reduce overnight tangles and support smoother skin and hair.",
+            "button_label": "Shop Pillowcases",
+            "link": "/collections/pillowcases",
+            "image_fallback": "banner-silk-pillowcase.jpg"
           }
         },
-        "text": {
-          "type": "text",
+        "panel-2": {
+          "type": "panel",
           "settings": {
-            "text": "<p>Duvet cover and two pillowcases in one weight. $465 in the spring sale, down from $620 bought separately.</p>"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "button_label": "Shop the bundle — $465",
-            "button_link": "shopify://collections/all",
-            "button_style_secondary": false
+            "title": "Premium Sleepwear",
+            "description": "Combining elegance and comfort for effortless everyday luxury.",
+            "button_label": "Shop Sleepwear",
+            "link": "/collections/sleepwear",
+            "image_fallback": "banner-premium-sleepwear.jpg"
           }
         }
       },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
+      "block_order": ["panel-1", "panel-2"]
+    },
+    "trust": {
+      "type": "trust-strip",
+      "blocks": {
+        "t1": { "type": "item", "settings": { "quote": "My skin and hair love this pillowcase.", "source": "Verified Buyer" } },
+        "t2": { "type": "item", "settings": { "quote": "So soft and comfortable, my favourite purchase.", "source": "Verified Buyer" } },
+        "t3": { "type": "item", "settings": { "quote": "Fast shipping and beautiful packaging.", "source": "Verified Buyer" } },
+        "t4": { "type": "item", "settings": { "quote": "Worth every penny, will buy again.", "source": "Verified Buyer" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"]
+    },
+    "sleep-masks-banner": {
+      "type": "promo-banner",
       "settings": {
-        "height": "medium",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "scheme-5",
-        "color_scheme": "scheme-5",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "align": "left",
+        "eyebrow": "BESTSELLER",
+        "title": "Silk Sleep Masks",
+        "description": "Beautifully soft and lightweight, blocks out light and reduces pressure on your eyes.",
+        "button_label": "Shop Sleep Masks",
+        "button_link": "/collections/sleep-masks",
+        "image_fallback": "banner-silk-sleep-masks.jpg"
       }
     },
-    "why_silk": {
-      "type": "hushhh-why-silk",
-      "blocks": {
-        "fact-1": {
-          "type": "fact",
-          "settings": {
-            "title": "Better for your skin",
-            "body": "Silk draws far less moisture out of the skin than cotton, so the serum you put on at night stays on your face — and the smooth surface leaves no sleep creases behind."
-          }
-        },
-        "fact-2": {
-          "type": "fact",
-          "settings": {
-            "title": "Better for your hair",
-            "body": "A smoother fibre means less tugging while you move, so hair keeps its shape: fewer tangles, less frizz and fewer split ends by morning."
-          }
-        },
-        "fact-3": {
-          "type": "fact",
-          "settings": {
-            "title": "Better temperature control",
-            "body": "Silk carries heat away from the body instead of holding it, and insulates once the night cools down. Cool in an Australian February, warm in July."
-          }
-        }
-      },
-      "block_order": [
-        "fact-1",
-        "fact-2",
-        "fact-3"
-      ],
+    "sleepwear-seen-in": {
+      "type": "featured-collection",
       "settings": {
-        "color_scheme": "scheme-1",
-        "kicker": "Why silk",
-        "heading": "<p>Skin, hair and temperature — all three at once.</p>",
-        "button_label": "Read Silk 101",
-        "button_link": ""
+        "heading": "Sleepwear you want to be seen in",
+        "view_all_label": "View All",
+        "view_all_link": "/collections/sleepwear",
+        "layout": "grid",
+        "background": "none",
+        "product_limit": 5
+      },
+      "blocks": {
+        "s1": { "type": "manual_product", "settings": { "title": "Long Premium Silk PJ Set", "vendor": "HUSHHH", "price": 249, "compare_at_price": 275, "image_fallback": "sleepwear-1-long-silk-pj.jpg" } },
+        "s2": { "type": "manual_product", "settings": { "title": "Palmelia Cardigan", "vendor": "HUSHHH", "price": 79, "image_fallback": "sleepwear-2-henley.jpg" } },
+        "s3": { "type": "manual_product", "settings": { "title": "Short Premium Striped PJ Set", "vendor": "HUSHHH", "price": 57, "compare_at_price": 95, "image_fallback": "sleepwear-3-striped-pj.jpg" } },
+        "s4": { "type": "manual_product", "settings": { "title": "Jersey Sleep Set", "vendor": "HUSHHH", "price": 59, "compare_at_price": 74, "image_fallback": "sleepwear-4-jersey.jpg" } },
+        "s5": { "type": "manual_product", "settings": { "title": "Jersey Sleep Set", "vendor": "HUSHHH", "price": 59, "compare_at_price": 74, "image_fallback": "sleepwear-5-jersey.jpg" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4", "s5"]
+    },
+    "bonnets-banner": {
+      "type": "promo-banner",
+      "settings": {
+        "align": "left",
+        "eyebrow": "BESTSELLER",
+        "title": "Silk Bonnets",
+        "description": "Protect your curls and style overnight with a fully adjustable silk bonnet.",
+        "button_label": "Shop Bonnets",
+        "button_link": "/collections/accessories",
+        "image_fallback": "banner-silk-bonnets.jpg"
       }
+    },
+    "bundles": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Bundles — Up to 50% off",
+        "view_all_label": "View All",
+        "view_all_link": "/collections/bundles",
+        "layout": "grid",
+        "background": "none",
+        "product_limit": 5
+      },
+      "blocks": {
+        "b1": { "type": "manual_product", "settings": { "title": "Ultimate Cooling Sleep Bundle", "vendor": "HUSHHH", "badge": "New", "price": 126, "compare_at_price": 360, "image_fallback": "bundle-1-cooling.jpg" } },
+        "b2": { "type": "manual_product", "settings": { "title": "Scalloped Deep Sleep Bundle", "vendor": "HUSHHH", "price": 105.95, "compare_at_price": 131.95, "image_fallback": "bundle-2-scalloped-deep-sleep.jpg" } },
+        "b3": { "type": "manual_product", "settings": { "title": "Deep Sleep Bundle", "vendor": "HUSHHH", "price": 87, "compare_at_price": 124, "image_fallback": "bundle-3-deep-sleep.jpg" } },
+        "b4": { "type": "manual_product", "settings": { "title": "Cheeky Short Bundle", "vendor": "HUSHHH", "price": 112, "compare_at_price": 125, "image_fallback": "bundle-4-cheeky-short.jpg" } },
+        "b5": { "type": "manual_product", "settings": { "title": "Scalloped Silk Bundle", "vendor": "HUSHHH", "price": 215.95, "compare_at_price": 269.95, "image_fallback": "bundle-5-scalloped-silk.jpg" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5"]
+    },
+    "pillowtalk": {
+      "type": "social-gallery",
+      "settings": {
+        "heading": "#pillowtalk with @hushhh",
+        "link_label": "Shop Now",
+        "link": "/collections/all"
+      },
+      "blocks": {
+        "ig1": { "type": "image", "settings": { "image_fallback": "pillowtalk-1.jpg" } },
+        "ig2": { "type": "image", "settings": { "image_fallback": "pillowtalk-2.jpg" } },
+        "ig3": { "type": "image", "settings": { "image_fallback": "pillowtalk-3.jpg" } },
+        "ig4": { "type": "image", "settings": { "image_fallback": "pillowtalk-4.jpg" } },
+        "ig5": { "type": "image", "settings": { "image_fallback": "pillowtalk-5.jpg" } },
+        "ig6": { "type": "image", "settings": { "image_fallback": "pillowtalk-6.jpg" } },
+        "ig7": { "type": "image", "settings": { "image_fallback": "pillowtalk-7.jpg" } },
+        "ig8": { "type": "image", "settings": { "image_fallback": "pillowtalk-8.jpg" } }
+      },
+      "block_order": ["ig1", "ig2", "ig3", "ig4", "ig5", "ig6", "ig7", "ig8"]
     },
     "reviews": {
-      "type": "hushhh-reviews",
+      "type": "reviews-grid",
+      "settings": { "rating_label": "Excellent 4.8 out of 5", "review_count": "12,000+" },
       "blocks": {
-        "r1": {
-          "type": "review",
-          "settings": {
-            "quote": "Woke up without a single crease on my face. That was the whole promise.",
-            "author": "Amelia R.",
-            "item": "The Deep Sleep Mask"
-          }
-        },
-        "r2": {
-          "type": "review",
-          "settings": {
-            "quote": "Third summer with the pillowcase and it still looks new. I have washed it a lot.",
-            "author": "Priya N.",
-            "item": "Silk Pillowcase"
-          }
-        },
-        "r3": {
-          "type": "review",
-          "settings": {
-            "quote": "Bought the set for my mother and immediately ordered a second one for myself.",
-            "author": "Kate M.",
-            "item": "Bed set bundle"
-          }
-        }
+        "r1": { "type": "review", "settings": { "text": "Their customer service is amazing and quick to respond.", "author": "M.", "date": "2 days ago" } },
+        "r2": { "type": "review", "settings": { "text": "My new go-to for gifts. Excellent quality and packaging.", "author": "K.", "date": "5 days ago" } },
+        "r3": { "type": "review", "settings": { "text": "Absolutely obsessed with the pillowcase, my hair feels amazing.", "author": "S.", "date": "1 week ago" } },
+        "r4": { "type": "review", "settings": { "text": "Fast shipping and everything as described. Will buy again.", "author": "R.", "date": "1 week ago" } }
       },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "heading": "What people write back",
-        "rating_text": "",
-        "link_label": "All reviews",
-        "link_url": ""
-      }
-    },
-    "ugc": {
-      "type": "hushhh-ugc",
-      "blocks": {
-        "u1": {
-          "type": "image",
-          "settings": {}
-        },
-        "u2": {
-          "type": "image",
-          "settings": {}
-        },
-        "u3": {
-          "type": "image",
-          "settings": {}
-        },
-        "u4": {
-          "type": "image",
-          "settings": {}
-        },
-        "u5": {
-          "type": "image",
-          "settings": {}
-        },
-        "u6": {
-          "type": "image",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "u1",
-        "u2",
-        "u3",
-        "u4",
-        "u5",
-        "u6"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "heading": "#hushhhnights",
-        "link_label": "Follow along",
-        "link_url": ""
-      }
-    },
-    "newsletter": {
-      "type": "newsletter",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Ten dollars off your first order",
-            "heading_size": "h2"
-          }
-        },
-        "paragraph": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>Plus care notes and new colours, twice a season. No daily email.</p>"
-          }
-        },
-        "email_form": {
-          "type": "email_form",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "paragraph",
-        "email_form"
-      ],
-      "settings": {
-        "color_scheme": "scheme-2",
-        "full_width": false,
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
+      "block_order": ["r1", "r2", "r3", "r4"]
     }
   },
   "order": [
     "hero",
-    "usp_strip",
     "bestsellers",
-    "categories",
-    "bundle",
-    "why_silk",
-    "reviews",
-    "ugc",
-    "newsletter"
+    "sleep-beautifully",
+    "silk-vs-sleepwear",
+    "trust",
+    "sleep-masks-banner",
+    "sleepwear-seen-in",
+    "bonnets-banner",
+    "bundles",
+    "pillowtalk",
+    "reviews"
   ]
 }
