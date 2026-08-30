@@ -11,8 +11,10 @@
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
 
-    {%- # HUSHHH: load Archivo directly so the brand typeface always renders,
-        regardless of whether the Shopify font-picker id below resolves. -%}
+    {%- comment -%}
+      HUSHHH: load Archivo directly so the brand typeface always renders,
+      regardless of whether the Shopify font-picker id below resolves.
+    {%- endcomment -%}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link

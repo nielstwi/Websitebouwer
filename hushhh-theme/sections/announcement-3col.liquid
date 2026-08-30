@@ -1,9 +1,9 @@
-{%- doc -%}
+{%- comment -%}
   HUSHHH announcement bar — three fixed messages shown side by side
   (sale, shipping, returns), matching the mockup's top bar. Dawn's native
   announcement-bar only supports one message or a rotating carousel, so this
   small section adds the always-visible 3-column layout instead.
-{%- enddoc -%}
+{%- endcomment -%}
 
 <div class="utility-bar color-{{ section.settings.color_scheme }} gradient">
   <div class="hushhh-announce">
@@ -15,7 +15,7 @@
 
 {% schema %}
 {
-  "name": "HUSHHH announcement (3-col)",
+  "name": "HUSHHH announcement",
   "class": "announcement-bar-section",
   "enabled_on": {
     "groups": ["header"]
@@ -48,7 +48,7 @@
   ],
   "presets": [
     {
-      "name": "HUSHHH announcement (3-col)"
+      "name": "HUSHHH announcement"
     }
   ]
 }
