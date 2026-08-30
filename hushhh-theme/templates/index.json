@@ -1,75 +1,400 @@
 {
   "sections": {
-    "image_banner": {
+    "hero": {
       "type": "image-banner",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "heading": "Better for your skin, your hair and your temperature.",
+            "heading_size": "h1"
           }
         },
-        "button": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Spring sale — 25% off. 22 momme mulberry silk: less friction on skin and hair, and it carries heat away instead of holding it. Ten years in.</p>",
+            "text_style": "body"
+          }
+        },
+        "buttons": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "Shop the sale",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_style_secondary_1": false,
+            "button_label_2": "Shop all silk",
+            "button_link_2": "shopify://collections/all",
+            "button_style_secondary_2": true
           }
         }
       },
       "block_order": [
         "heading",
-        "button"
+        "text",
+        "buttons"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
+        "image_overlay_opacity": 0,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
+        "desktop_content_position": "bottom-left",
+        "show_text_box": true,
         "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "mobile_content_alignment": "left",
         "stack_images_on_mobile": false,
-        "show_text_below": false
+        "show_text_below": true
       }
     },
-    "featured_collection": {
+    "usp_strip": {
+      "type": "multicolumn",
+      "blocks": {
+        "usp-1": {
+          "type": "column",
+          "settings": {
+            "title": "22 momme silk",
+            "text": "<p>Denser than the usual 19</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "usp-2": {
+          "type": "column",
+          "settings": {
+            "title": "Kind to skin",
+            "text": "<p>Less friction, less moisture loss</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "usp-3": {
+          "type": "column",
+          "settings": {
+            "title": "Kind to hair",
+            "text": "<p>Fewer tangles, less frizz</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "usp-4": {
+          "type": "column",
+          "settings": {
+            "title": "Temperature regulating",
+            "text": "<p>Cool in summer, warm in winter</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "usp-1",
+        "usp-2",
+        "usp-3",
+        "usp-4"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "bestsellers": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
+        "title": "Bestsellers",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
         "collection": "all",
-        "products_to_show": 8,
+        "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
-        "view_all_style": "solid",
+        "view_all_style": "link",
         "enable_desktop_slider": false,
         "swipe_on_mobile": false,
-        "image_ratio": "adapt",
+        "image_ratio": "portrait",
         "image_shape": "default",
-        "show_secondary_image": true,
+        "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
         "padding_top": 44,
-        "padding_bottom": 36
+        "padding_bottom": 0
+      }
+    },
+    "categories": {
+      "type": "collection-list",
+      "blocks": {
+        "cat-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "cat-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "cat-3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "cat-4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "cat-1",
+        "cat-2",
+        "cat-3",
+        "cat-4"
+      ],
+      "settings": {
+        "title": "Shop by category",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "show_view_all": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "bundle": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "The bed set, complete.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Duvet cover and two pillowcases in one weight. $465 in the spring sale, down from $620 bought separately.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop the bundle — $465",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-5",
+        "color_scheme": "scheme-5",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "why_silk": {
+      "type": "hushhh-why-silk",
+      "blocks": {
+        "fact-1": {
+          "type": "fact",
+          "settings": {
+            "title": "Better for your skin",
+            "body": "Silk draws far less moisture out of the skin than cotton, so the serum you put on at night stays on your face — and the smooth surface leaves no sleep creases behind."
+          }
+        },
+        "fact-2": {
+          "type": "fact",
+          "settings": {
+            "title": "Better for your hair",
+            "body": "A smoother fibre means less tugging while you move, so hair keeps its shape: fewer tangles, less frizz and fewer split ends by morning."
+          }
+        },
+        "fact-3": {
+          "type": "fact",
+          "settings": {
+            "title": "Better temperature control",
+            "body": "Silk carries heat away from the body instead of holding it, and insulates once the night cools down. Cool in an Australian February, warm in July."
+          }
+        }
+      },
+      "block_order": [
+        "fact-1",
+        "fact-2",
+        "fact-3"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "kicker": "Why silk",
+        "heading": "<p>Skin, hair and temperature — all three at once.</p>",
+        "button_label": "Read Silk 101",
+        "button_link": ""
+      }
+    },
+    "reviews": {
+      "type": "hushhh-reviews",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "quote": "Woke up without a single crease on my face. That was the whole promise.",
+            "author": "Amelia R.",
+            "item": "The Deep Sleep Mask"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "quote": "Third summer with the pillowcase and it still looks new. I have washed it a lot.",
+            "author": "Priya N.",
+            "item": "Silk Pillowcase"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "quote": "Bought the set for my mother and immediately ordered a second one for myself.",
+            "author": "Kate M.",
+            "item": "Bed set bundle"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "What people write back",
+        "rating_text": "",
+        "link_label": "All reviews",
+        "link_url": ""
+      }
+    },
+    "ugc": {
+      "type": "hushhh-ugc",
+      "blocks": {
+        "u1": {
+          "type": "image",
+          "settings": {}
+        },
+        "u2": {
+          "type": "image",
+          "settings": {}
+        },
+        "u3": {
+          "type": "image",
+          "settings": {}
+        },
+        "u4": {
+          "type": "image",
+          "settings": {}
+        },
+        "u5": {
+          "type": "image",
+          "settings": {}
+        },
+        "u6": {
+          "type": "image",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "u1",
+        "u2",
+        "u3",
+        "u4",
+        "u5",
+        "u6"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "#hushhhnights",
+        "link_label": "Follow along",
+        "link_url": ""
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ten dollars off your first order",
+            "heading_size": "h2"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Plus care notes and new colours, twice a season. No daily email.</p>"
+          }
+        },
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "full_width": false,
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hero",
+    "usp_strip",
+    "bestsellers",
+    "categories",
+    "bundle",
+    "why_silk",
+    "reviews",
+    "ugc",
+    "newsletter"
   ]
 }

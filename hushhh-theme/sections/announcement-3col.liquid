@@ -1,0 +1,55 @@
+{%- doc -%}
+  HUSHHH announcement bar — three fixed messages shown side by side
+  (sale, shipping, returns), matching the mockup's top bar. Dawn's native
+  announcement-bar only supports one message or a rotating carousel, so this
+  small section adds the always-visible 3-column layout instead.
+{%- enddoc -%}
+
+<div class="utility-bar color-{{ section.settings.color_scheme }} gradient">
+  <div class="hushhh-announce">
+    <span class="hushhh-announce__sale">{{ section.settings.text_left | escape }}</span>
+    <span>{{ section.settings.text_center | escape }}</span>
+    <span>{{ section.settings.text_right | escape }}</span>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "HUSHHH announcement (3-col)",
+  "class": "announcement-bar-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-5"
+    },
+    {
+      "type": "text",
+      "id": "text_left",
+      "label": "Left message (sale)",
+      "default": "Spring sale — 25% off selected silk"
+    },
+    {
+      "type": "text",
+      "id": "text_center",
+      "label": "Center message",
+      "default": "Free shipping across Australia"
+    },
+    {
+      "type": "text",
+      "id": "text_right",
+      "label": "Right message",
+      "default": "30 days to change your mind"
+    }
+  ],
+  "presets": [
+    {
+      "name": "HUSHHH announcement (3-col)"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,117 @@
+{%- doc -%}
+  Split "Why silk" section: kicker + heading + a list of fact blocks on one
+  side, a full-bleed image on the other. Matches the mockup's homepage and
+  PDP "Why silk" story block.
+{%- enddoc -%}
+
+<div class="hushhh-section color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="hushhh-why-silk">
+      <div class="hushhh-why-silk__content">
+        {%- if section.settings.kicker != blank -%}
+          <span class="hushhh-kicker">{{ section.settings.kicker | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="h1">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        <div class="hushhh-why-silk__facts">
+          {%- for block in section.blocks -%}
+            <div class="hushhh-why-silk__fact" {{ block.shopify_attributes }}>
+              <h5 class="h5">{{ block.settings.title | escape }}</h5>
+              <p>{{ block.settings.body }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link | default: '#' }}" class="button button--secondary">
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+      <div class="hushhh-why-silk__media">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 50vw, 100vw' }}
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.hushhh-why-silk {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 8.8rem 0;
+}
+.hushhh-why-silk__facts {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+.hushhh-why-silk__fact {
+  padding: 2rem 0;
+  border-top: 1px solid var(--hushhh-divider);
+}
+.hushhh-why-silk__fact p {
+  color: var(--hushhh-ink-soft);
+  line-height: 1.7;
+  margin: 0.8rem 0 0;
+}
+.hushhh-why-silk__media img,
+.hushhh-why-silk__media svg,
+.hushhh-why-silk__media .placeholder-svg {
+  width: 100%;
+  height: 52rem;
+  object-fit: cover;
+  display: block;
+}
+.hushhh-why-silk__content .button {
+  margin-top: 2.4rem;
+}
+@media screen and (min-width: 750px) {
+  .hushhh-why-silk {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8.8rem;
+    padding: 8.8rem 4.8rem;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "HUSHHH — Why silk",
+  "class": "hushhh-why-silk-section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Why silk" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Skin, hair and temperature — all three at once.</p>" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Read Silk 101" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "blocks": [
+    {
+      "type": "fact",
+      "name": "Fact",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "body", "label": "Body" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HUSHHH — Why silk",
+      "blocks": [
+        { "type": "fact", "settings": { "title": "Better for your skin", "body": "Silk draws far less moisture out of the skin than cotton, so the serum you put on at night stays on your face — and the smooth surface leaves no sleep creases behind." } },
+        { "type": "fact", "settings": { "title": "Better for your hair", "body": "A smoother fibre means less tugging while you move, so hair keeps its shape: fewer tangles, less frizz and fewer split ends by morning." } },
+        { "type": "fact", "settings": { "title": "Better temperature control", "body": "Silk carries heat away from the body instead of holding it, and insulates once the night cools down. Cool in an Australian February, warm in July." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,1 +1,205 @@
-{"sections":{"main":{"type":"main-product","blocks":{"vendor":{"type":"text","settings":{"text":"{{ product.vendor }}","text_style":"uppercase"}},"title":{"type":"title","settings":{}},"price":{"type":"price","settings":{}},"variant_picker":{"type":"variant_picker","settings":{"picker_type":"button","swatch_shape":"circle"}},"quantity_selector":{"type":"quantity_selector","settings":{}},"buy_buttons":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true,"show_gift_card_recipient":true}},"description":{"type":"description","settings":{}},"share":{"type":"share","settings":{"share_label":"Share"}}},"block_order":["vendor","title","price","variant_picker","quantity_selector","buy_buttons","description","share"],"settings":{"enable_sticky_info":true,"color_scheme":"scheme-1","media_size":"large","constrain_to_viewport":true,"media_fit":"contain","gallery_layout":"stacked","mobile_thumbnails":"hide","media_position":"left","image_zoom":"lightbox","hide_variants":true,"enable_video_looping":false,"padding_top":36,"padding_bottom":12}},"disclosures":{"type":"disclosures","settings":{"padding_top":36,"padding_bottom":0}},"related-products":{"type":"related-products","settings":{"heading":"You may also like","heading_size":"h2","products_to_show":4,"columns_desktop":4,"columns_mobile":"2","color_scheme":"scheme-1","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"padding_top":36,"padding_bottom":28}}},"order":["main","disclosures","related-products"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "tab-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Size and fit",
+            "icon": "none",
+            "content": "<p>One size, fits most.</p>",
+            "page": ""
+          }
+        },
+        "tab-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How to wash it",
+            "icon": "none",
+            "content": "<p>Machine washable on a gentle cycle, or hand wash in cool water and lay flat to dry.</p>",
+            "page": ""
+          }
+        },
+        "tab-3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping and returns",
+            "icon": "none",
+            "content": "<p>Free shipping across Australia. Thirty days to change your mind, on everything.</p>",
+            "page": ""
+          }
+        },
+        "tab-4": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What it is made of",
+            "icon": "none",
+            "content": "<p>22 momme mulberry silk, OEKO-TEX certified.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "description",
+        "quantity_selector",
+        "buy_buttons",
+        "tab-1",
+        "tab-2",
+        "tab-3",
+        "tab-4"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "gallery_layout": "thumbnail",
+        "mobile_thumbnails": "show",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 32,
+        "padding_bottom": 12
+      }
+    },
+    "why_silk": {
+      "type": "hushhh-why-silk",
+      "blocks": {
+        "fact-1": {
+          "type": "fact",
+          "settings": {
+            "title": "Better for your skin",
+            "body": "Silk draws far less moisture out of the skin than cotton, so the serum you put on at night stays on your face — and the smooth surface leaves no sleep creases behind."
+          }
+        },
+        "fact-2": {
+          "type": "fact",
+          "settings": {
+            "title": "Better for your hair",
+            "body": "A smoother fibre means less tugging while you move, so hair keeps its shape: fewer tangles, less frizz and fewer split ends by morning."
+          }
+        },
+        "fact-3": {
+          "type": "fact",
+          "settings": {
+            "title": "Better temperature control",
+            "body": "Silk carries heat away from the body instead of holding it, and insulates once the night cools down."
+          }
+        }
+      },
+      "block_order": [
+        "fact-1",
+        "fact-2",
+        "fact-3"
+      ],
+      "settings": {
+        "color_scheme": "scheme-5",
+        "kicker": "Why silk",
+        "heading": "<p>Skin, hair and temperature — all three at once.</p>",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "reviews": {
+      "type": "hushhh-reviews",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "quote": "Woke up without a single crease on my face. That was the whole promise.",
+            "author": "Amelia R.",
+            "item": ""
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "quote": "Third summer with the pillowcase and it still looks new. I have washed it a lot.",
+            "author": "Priya N.",
+            "item": ""
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "quote": "Bought the set for my mother and immediately ordered a second one for myself.",
+            "author": "Kate M.",
+            "item": ""
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "Reviews",
+        "rating_text": "4.9 average · 612 reviews",
+        "link_label": "Write a review",
+        "link_url": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 44,
+        "padding_bottom": 72
+      }
+    }
+  },
+  "order": [
+    "main",
+    "why_silk",
+    "reviews",
+    "related-products"
+  ]
+}

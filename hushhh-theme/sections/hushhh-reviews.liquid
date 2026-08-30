@@ -1,0 +1,114 @@
+{%- doc -%}
+  Three-column review/testimonial grid. Matches the mockup's
+  "What people write back" / "Reviews" blocks.
+{%- enddoc -%}
+
+<div class="hushhh-section color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="hushhh-reviews__head">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="h1">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.rating_text != blank -%}
+        <span class="hushhh-kicker">{{ section.settings.rating_text | escape }}</span>
+      {%- endif -%}
+      {%- if section.settings.link_label != blank -%}
+        <a href="{{ section.settings.link_url | default: '#' }}" class="link hushhh-reviews__all">
+          {{ section.settings.link_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+    <div class="hushhh-reviews__grid">
+      {%- for block in section.blocks -%}
+        <div class="hushhh-reviews__card" {{ block.shopify_attributes }}>
+          <p class="h4">&ldquo;{{ block.settings.quote }}&rdquo;</p>
+          <span class="hushhh-kicker">{{ block.settings.author | escape }}</span>
+          {%- if block.settings.item != blank -%}
+            <span class="hushhh-kicker" style="color: var(--hushhh-divider-strong)">{{ block.settings.item | escape }}</span>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.hushhh-reviews__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 7.2rem 0 3.4rem;
+}
+.hushhh-reviews__all {
+  border-bottom: 1px solid var(--hushhh-divider-strong);
+  padding-bottom: 0.3rem;
+  text-decoration: none;
+}
+.hushhh-reviews__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.8rem;
+  padding-bottom: 7.2rem;
+}
+.hushhh-reviews__card {
+  border: 1px solid var(--hushhh-divider);
+  border-radius: 0.6rem;
+  background: #fff;
+  padding: 3rem 2.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.hushhh-reviews__card .h4 {
+  margin: 0;
+  line-height: 1.5;
+}
+@media screen and (min-width: 750px) {
+  .hushhh-reviews__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .hushhh-reviews__head {
+    padding: 7.2rem 4.8rem 3.4rem;
+  }
+  .hushhh-reviews__grid {
+    padding: 0 4.8rem 7.2rem;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "HUSHHH — Reviews",
+  "class": "hushhh-reviews-section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What people write back" },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "All reviews" },
+    { "type": "url", "id": "link_url", "label": "Link URL" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "author", "label": "Author" },
+        { "type": "text", "id": "item", "label": "Item purchased" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HUSHHH — Reviews",
+      "blocks": [
+        { "type": "review", "settings": { "quote": "Woke up without a single crease on my face. That was the whole promise.", "author": "Amelia R.", "item": "The Deep Sleep Mask" } },
+        { "type": "review", "settings": { "quote": "Third summer with the pillowcase and it still looks new. I have washed it a lot.", "author": "Priya N.", "item": "Silk Pillowcase" } },
+        { "type": "review", "settings": { "quote": "Bought the set for my mother and immediately ordered a second one for myself.", "author": "Kate M.", "item": "Bed set bundle" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
