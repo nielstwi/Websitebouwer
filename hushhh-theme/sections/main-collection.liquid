@@ -5,6 +5,18 @@
     <p class="collection-count">{{ 'collections.general.items_count' | t: count: collection.products_count }}</p>
   </div>
 
+  <div class="collection-toolbar">
+    <span class="collection-toolbar__count">{{ collection.products_count }} {{ 'collections.general.items_count' | t: count: collection.products_count }}</span>
+    <form class="collection-toolbar__sort" method="get">
+      <label for="SortBy-{{ section.id }}">{{ 'collections.sorting.title' | t }}</label>
+      <select name="sort_by" id="SortBy-{{ section.id }}" onchange="this.form.submit()">
+        {%- for option in collection.sort_options -%}
+          <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
+        {%- endfor -%}
+      </select>
+    </form>
+  </div>
+
   {% paginate collection.products by 24 %}
     {% if collection.products.size > 0 %}
       <div class="product-grid">

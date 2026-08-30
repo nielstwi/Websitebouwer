@@ -43,13 +43,19 @@
         {% unless product.has_only_default_variant %}
           {% for option in product.options_with_values %}
             <div class="pdp__option">
-              <label>{{ option.name }}</label>
-              <div class="pdp__option-values">
+              <label>{{ option.name }}{% if option.name == 'Color' or option.name == 'Colour' %}: <span class="pdp__option-selected">{{ option.selected_value }}</span>{% endif %}</label>
+              <div class="pdp__option-values{% if option.name == 'Color' or option.name == 'Colour' %} pdp__option-values--swatch{% endif %}">
                 {% for value in option.values %}
-                  <label class="pdp__option-pill">
-                    <input type="radio" name="option-{{ option.position }}" value="{{ value | escape }}" class="visually-hidden" {% if option.selected_value == value %}checked{% endif %}>
-                    <span>{{ value }}</span>
-                  </label>
+                  {% if option.name == 'Color' or option.name == 'Colour' %}
+                    <label class="swatch swatch--input" style="background: {{ value | handle }};" title="{{ value | escape }}">
+                      <input type="radio" name="option-{{ option.position }}" value="{{ value | escape }}" class="visually-hidden" {% if option.selected_value == value %}checked{% endif %}>
+                    </label>
+                  {% else %}
+                    <label class="pdp__option-pill">
+                      <input type="radio" name="option-{{ option.position }}" value="{{ value | escape }}" class="visually-hidden" {% if option.selected_value == value %}checked{% endif %}>
+                      <span>{{ value }}</span>
+                    </label>
+                  {% endif %}
                 {% endfor %}
               </div>
             </div>
@@ -72,21 +78,63 @@
         </button>
       {% endform %}
 
+      {% if section.settings.show_rating_badge %}
+        <div class="pdp__rating">★★★★★ <span>{{ section.settings.rating_text }}</span></div>
+      {% endif %}
+
       <div class="pdp__trust-icons">
         <span>&#9993; Free shipping over {{ settings.cart_shipping_threshold | times: 100 | money_without_trailing_zeros }}</span>
-        <span>&#8635; 30-day returns</span>
+        <span>&#8635; {{ section.settings.trial_text }}</span>
         <span>&#9989; Secure checkout</span>
       </div>
 
-      {% if section.settings.show_shipping_accordion %}
-        <details class="pdp__accordion">
-          <summary>{{ 'products.product.shipping_returns' | t }}</summary>
-          <div>{{ section.settings.shipping_text }}</div>
-        </details>
-      {% endif %}
+      <div class="pdp__accordions">
+        {% for block in section.blocks %}
+          {% if block.type == 'accordion' %}
+            <details class="pdp__accordion" {{ block.shopify_attributes }}>
+              <summary>{{ block.settings.heading }}</summary>
+              <div class="rte">{{ block.settings.content }}</div>
+            </details>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>
+
+{% for block in section.blocks %}
+  {% if block.type == 'benefit_row' %}
+    <div class="container section-padding pdp__benefits">
+      <div class="pdp__benefits-grid">
+        {% for i in (1..3) %}
+          {% assign title_key = 'benefit_' | append: i | append: '_title' %}
+          {% assign body_key = 'benefit_' | append: i | append: '_body' %}
+          {% if block.settings[title_key] != blank %}
+            <div class="pdp__benefit">
+              <h3>{{ block.settings[title_key] }}</h3>
+              <p>{{ block.settings[body_key] }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% elsif block.type == 'stats_row' %}
+    <div class="container section-padding pdp__stats" {{ block.shopify_attributes }}>
+      <div class="pdp__stats-grid">
+        {% for i in (1..3) %}
+          {% assign value_key = 'stat_' | append: i | append: '_value' %}
+          {% assign label_key = 'stat_' | append: i | append: '_label' %}
+          {% if block.settings[value_key] != blank %}
+            <div class="pdp__stat">
+              <div class="pdp__stat-value">{{ block.settings[value_key] }}</div>
+              <div class="pdp__stat-label">{{ block.settings[label_key] }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
 
 <script>
   document.addEventListener('click', function (e) {
@@ -102,8 +150,44 @@
 {
   "name": "Product information",
   "settings": [
-    { "type": "checkbox", "id": "show_shipping_accordion", "label": "Show shipping & returns accordion", "default": true },
-    { "type": "textarea", "id": "shipping_text", "label": "Shipping & returns text", "default": "Free standard shipping on orders over the threshold set in Theme Settings → Cart. Easy 30-day returns on unworn items." }
-  ]
+    { "type": "checkbox", "id": "show_rating_badge", "label": "Show star rating badge", "default": true },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "4.9 average, 600+ reviews" },
+    { "type": "text", "id": "trial_text", "label": "Trial/returns text", "default": "30-day returns" }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion item",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Details" },
+        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Add details here.</p>" }
+      ]
+    },
+    {
+      "type": "benefit_row",
+      "name": "Benefit row (3 columns)",
+      "settings": [
+        { "type": "text", "id": "benefit_1_title", "label": "Benefit 1 title" },
+        { "type": "textarea", "id": "benefit_1_body", "label": "Benefit 1 body" },
+        { "type": "text", "id": "benefit_2_title", "label": "Benefit 2 title" },
+        { "type": "textarea", "id": "benefit_2_body", "label": "Benefit 2 body" },
+        { "type": "text", "id": "benefit_3_title", "label": "Benefit 3 title" },
+        { "type": "textarea", "id": "benefit_3_body", "label": "Benefit 3 body" }
+      ]
+    },
+    {
+      "type": "stats_row",
+      "name": "Stats row (3 columns)",
+      "settings": [
+        { "type": "text", "id": "stat_1_value", "label": "Stat 1 value" },
+        { "type": "text", "id": "stat_1_label", "label": "Stat 1 label" },
+        { "type": "text", "id": "stat_2_value", "label": "Stat 2 value" },
+        { "type": "text", "id": "stat_2_label", "label": "Stat 2 label" },
+        { "type": "text", "id": "stat_3_value", "label": "Stat 3 value" },
+        { "type": "text", "id": "stat_3_label", "label": "Stat 3 label" }
+      ]
+    }
+  ],
+  "max_blocks": 12
 }
 {% endschema %}

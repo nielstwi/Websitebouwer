@@ -3,9 +3,36 @@
     "main": {
       "type": "main-product",
       "settings": {
-        "show_shipping_accordion": true,
-        "shipping_text": "Free standard shipping on orders over the threshold set in Theme Settings → Cart. Easy 30-day returns on unworn items."
-      }
+        "show_rating_badge": true,
+        "rating_text": "4.9 average, 600+ reviews",
+        "trial_text": "30-day returns"
+      },
+      "blocks": {
+        "acc-1": { "type": "accordion", "settings": { "heading": "Details", "content": "<p>Materials, size and certifications go here.</p>" } },
+        "acc-2": { "type": "accordion", "settings": { "heading": "Care guide", "content": "<p>Washing and maintenance instructions go here.</p>" } },
+        "acc-3": { "type": "accordion", "settings": { "heading": "Shipping & returns", "content": "<p>Free standard shipping on orders over the threshold set in Theme Settings → Cart. Easy 30-day returns on unworn items.</p>" } },
+        "acc-4": { "type": "accordion", "settings": { "heading": "FAQ", "content": "<p>Answer common fit, sensitivity and care questions here.</p>" } },
+        "benefits": {
+          "type": "benefit_row",
+          "settings": {
+            "benefit_1_title": "Total darkness",
+            "benefit_1_body": "Blocks light fully for uninterrupted sleep.",
+            "benefit_2_title": "Kind to skin",
+            "benefit_2_body": "Smooth fibres reduce friction overnight.",
+            "benefit_3_title": "All-night comfort",
+            "benefit_3_body": "Breathable and lightweight, all night."
+          }
+        },
+        "stats": {
+          "type": "stats_row",
+          "settings": {
+            "stat_1_value": "92%", "stat_1_label": "fell asleep faster",
+            "stat_2_value": "88%", "stat_2_label": "reported fewer wake-ups",
+            "stat_3_value": "95%", "stat_3_label": "would repurchase"
+          }
+        }
+      },
+      "block_order": ["acc-1", "acc-2", "acc-3", "acc-4", "benefits", "stats"]
     },
     "you-may-also-like": {
       "type": "featured-collection",

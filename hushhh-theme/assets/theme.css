@@ -369,6 +369,34 @@ input, textarea, select { font-family: inherit; font-size: 1em; }
 .collection-count { font-size: 12px; opacity: .6; text-transform: uppercase; letter-spacing: .05em; }
 .pagination { display: flex; justify-content: center; gap: 10px; margin-top: 40px; font-size: 13px; }
 .pagination .is-current { font-weight: 700; }
+.collection-toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0; margin-bottom: 20px; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);
+  font-size: 12px; text-transform: uppercase; letter-spacing: .05em;
+}
+.collection-toolbar__sort { display: flex; align-items: center; gap: 8px; }
+.collection-toolbar__sort select { font: inherit; text-transform: inherit; letter-spacing: inherit; border: 1px solid var(--color-border); padding: 6px 10px; background: var(--color-background); color: var(--color-text); }
+
+/* ---------- PDP: swatch option, rating, benefits, stats ---------- */
+.pdp__option-selected { text-transform: none; font-weight: 400; letter-spacing: 0; opacity: .7; }
+.pdp__option-values--swatch { gap: 10px; }
+.swatch--input {
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid var(--color-border); box-shadow: inset 0 0 0 1.5px var(--color-background);
+  display: inline-block; cursor: pointer;
+}
+.swatch--input:has(input:checked) { box-shadow: inset 0 0 0 1.5px var(--color-background), 0 0 0 2px var(--color-text); }
+.pdp__rating { font-size: 13px; color: var(--color-rating, #00B67A); margin-bottom: 12px; }
+.pdp__rating span { color: var(--color-text); opacity: .7; margin-left: 6px; }
+.pdp__accordions { margin-top: 8px; }
+.pdp__benefits-grid, .pdp__stats-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; text-align: center;
+}
+@media (max-width: 749px) { .pdp__benefits-grid, .pdp__stats-grid { grid-template-columns: 1fr; gap: 24px; } }
+.pdp__benefit h3 { font-size: 16px; margin-bottom: 8px; }
+.pdp__benefit p { font-size: 13px; opacity: .75; margin: 0; }
+.pdp__stat-value { font-family: var(--font-header-family); font-size: 40px; line-height: 1; margin-bottom: 8px; }
+.pdp__stat-label { font-size: 13px; opacity: .75; }
 
 /* ---------- Cart page ---------- */
 .cart-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
