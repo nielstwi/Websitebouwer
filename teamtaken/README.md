@@ -1,41 +1,37 @@
 # Teamtaken
 
-To-do lijst voor de 5 werkdagen (ma–vr) met tijdregistratie en een manager-portal met analyse.
-Volledig gratis: geen externe diensten, geen npm-pakketten, geen abonnementen.
+Dashboard in de browser: to-do lijst voor de 5 werkdagen (ma–vr) met tijdregistratie en een
+manager-portal met analyse. Draait **gratis** op Cloudflare (Workers + D1, gratis tier, geen creditcard nodig).
 
-## Starten
+## Online zetten (eenmalig, ±5 minuten)
 
-Vereist alleen [Node.js](https://nodejs.org) 22.13 of nieuwer (gratis).
+1. Maak een gratis account op <https://dash.cloudflare.com/sign-up> (geen betaalgegevens nodig).
+2. Installeer [Node.js](https://nodejs.org) (LTS) op je computer.
+3. Open een terminal in deze map en voer uit:
+   ```
+   npm install
+   npx wrangler login      # opent de browser; klik "Allow"
+   npm run deploy
+   ```
+   De database (D1) wordt automatisch aangemaakt. Aan het eind krijg je een link zoals
+   `https://teamtaken.<jouw-naam>.workers.dev` — dat is het dashboard.
+4. Open de link: je maakt als eerste het **manager-account** aan. Daarna maak je onder **Beheer**
+   per collega een login aan en stel je zelf het wachtwoord in. Stuur collega's de link.
 
-```
-cd teamtaken
-node server.js        # opent op http://localhost:3000
-```
-
-Bij de eerste start maak je in de browser het **manager-account** aan. Daarna maak je onder
-**Beheer** per collega een account aan en stel je zelf het wachtwoord in (opnieuw instellen kan altijd).
+Updates uitrollen: `npm run deploy` opnieuw uitvoeren (data blijft bewaard).
+Lokaal testen: `npm run dev` (http://localhost:8787).
 
 ## Gebruik
 
-- **Collega**: ziet alleen de eigen week (ma–vr), voegt taken toe (activiteit uit lijst of nieuw, klant/reden,
-  opmerkingen, verwachte tijd in minuten/uren) en vult bij afronden de bestede tijd in.
-- **Manager**: tab per collega (weekbord + volledige analyse), tab *Overzicht & analyse* voor het hele team,
-  tab *Beheer* voor accounts en de activiteitenlijst. Taken van de manager zijn gemarkeerd en kunnen
-  door de collega niet worden verwijderd.
-- **Analyse**: aantal/afgerond %, achterstallig, verwachte vs. bestede tijd, afwijking, nauwkeurigheid,
-  gemiddelde per taak, per activiteit, per klant/reden, per weekdag, per medewerker + CSV-export (Excel).
-- Zelf toegevoegde activiteiten worden opgeslagen in de lijst.
+- **Collega**: eigen week (ma–vr); taak = activiteit (kiezen uit lijst of nieuw, wordt opgeslagen),
+  klant/reden, opmerkingen, verwachte tijd (min/uur). Bij afronden vullen ze de bestede tijd in.
+- **Manager**: tab per collega (weekbord + volledige analyse), *Overzicht & analyse* voor het team,
+  *Beheer* voor accounts (wachtwoorden zelf instellen) en de activiteitenlijst.
+  Taken van de manager zijn gemarkeerd en kunnen door de collega niet worden verwijderd.
+- **Analyse**: aantallen, % afgerond, achterstallig, verwacht vs. besteed, afwijking, nauwkeurigheid,
+  gemiddelden, per activiteit / klant / weekdag / medewerker, CSV-export (Excel).
 
-## Gratis hosten
+## Gratis limieten (ruim genoeg voor een team)
 
-Alle data staat in één bestand: `data/teamtaken.db` (maak hiervan regelmatig een kopie als back-up).
-
-1. **Op een pc/laptop op kantoor (aanbevolen, echt gratis)**: draai `node server.js` en laat collega's
-   `http://<ip-van-die-pc>:3000` openen op hetzelfde netwerk. Voor toegang van buitenaf: gratis
-   Cloudflare Tunnel (`cloudflared tunnel --url http://localhost:3000`).
-2. **Gratis cloud-tiers** (bv. Oracle Cloud Always Free VM) werken ook, mits de schijf behouden blijft.
-   Gratis tiers van veel diensten (Render, Fly, Railway) wissen of beperken bestanden op schijf;
-   dan raak je je data kwijt.
-
-Omgevingsvariabelen: `PORT` (standaard 3000), `DATA_DIR` (standaard `./data`).
-Zet bij gebruik via internet altijd HTTPS ervoor (Cloudflare Tunnel doet dit automatisch).
+Workers: 100.000 verzoeken/dag · D1: 5 GB opslag, 5 miljoen reads/dag, 100.000 writes/dag.
+Wachtwoorden worden met PBKDF2 gehasht; sessies via HttpOnly-cookie; HTTPS is standaard.

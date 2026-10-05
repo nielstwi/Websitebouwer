@@ -1,8 +1,11 @@
 {
   "name": "teamtaken",
-  "version": "1.0.0",
-  "description": "To-do lijst voor de 5 werkdagen met tijdregistratie en manager-analyse",
+  "version": "2.0.0",
+  "description": "Dashboard met to-do lijst voor de 5 werkdagen, tijdregistratie en manager-analyse (Cloudflare Workers + D1, gratis tier)",
   "private": true,
-  "engines": { "node": ">=22.13" },
-  "scripts": { "start": "node server.js" }
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": { "wrangler": "^4" }
 }
