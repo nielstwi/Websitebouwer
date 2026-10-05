@@ -1,0 +1,8 @@
+{
+  "name": "teamtaken",
+  "version": "1.0.0",
+  "description": "To-do lijst voor de 5 werkdagen met tijdregistratie en manager-analyse",
+  "private": true,
+  "engines": { "node": ">=22.13" },
+  "scripts": { "start": "node server.js" }
+}
