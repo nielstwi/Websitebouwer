@@ -446,12 +446,12 @@ function render() {
   } else {
     content = boardHtml(state.user.id);
   }
-  app.innerHTML = `<header class="topbar"><h1>A-Gas Teamtaken</h1><span class="muted small">${esc(state.user.name)}${isManager() ? ' (manager)' : ''}</span>
+  app.innerHTML = `<header class="topbar"><img class="logo" src="/logo.svg" alt="A-Gas"><span class="app-name">Teamtaken</span><span class="muted small">${esc(state.user.name)}${isManager() ? ' (manager)' : ''}</span>
     <button class="btn small" data-act="logout">Uitloggen</button></header>
     <main class="container">${!isManager() ? '<h2 style="font-size:20px;margin-bottom:12px">Mijn takenlijst</h2>' : ''}${tabs}${content}</main>`;
 }
 function authHtml(setup) {
-  return `<div class="auth"><div class="card"><h1>A-Gas Teamtaken</h1>
+  return `<div class="auth"><div class="card"><img class="logo" src="/logo.svg" alt="A-Gas"><h1>Teamtaken</h1>
     <p class="muted" style="margin-top:0">${setup ? 'Eerste keer opstarten: maak het manager-account aan.' : 'Log in om je takenlijst te zien.'}</p>
     <form id="authForm" class="form-grid">
       ${setup ? '<label>Jouw naam<input name="name" required maxlength="80"></label>' : ''}
