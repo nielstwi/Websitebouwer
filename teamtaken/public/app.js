@@ -446,12 +446,12 @@ function render() {
   } else {
     content = boardHtml(state.user.id);
   }
-  app.innerHTML = `<header class="topbar"><h1>Teamtaken</h1><span class="muted small">${esc(state.user.name)}${isManager() ? ' (manager)' : ''}</span>
+  app.innerHTML = `<header class="topbar"><h1>A-Gas Teamtaken</h1><span class="muted small">${esc(state.user.name)}${isManager() ? ' (manager)' : ''}</span>
     <button class="btn small" data-act="logout">Uitloggen</button></header>
     <main class="container">${!isManager() ? '<h2 style="font-size:20px;margin-bottom:12px">Mijn takenlijst</h2>' : ''}${tabs}${content}</main>`;
 }
 function authHtml(setup) {
-  return `<div class="auth"><div class="card"><h1>Teamtaken</h1>
+  return `<div class="auth"><div class="card"><h1>A-Gas Teamtaken</h1>
     <p class="muted" style="margin-top:0">${setup ? 'Eerste keer opstarten: maak het manager-account aan.' : 'Log in om je takenlijst te zien.'}</p>
     <form id="authForm" class="form-grid">
       ${setup ? '<label>Jouw naam<input name="name" required maxlength="80"></label>' : ''}
@@ -539,7 +539,7 @@ function exportCsv() {
   const lines = state.rangeTasks.map((t) => [t.day, DAYS[weekdayIdx(t.day)], (userById(t.user_id) || {}).name, t.activity, t.customer, t.notes,
     t.est_minutes, t.status === 'done' ? t.spent_minutes : '', t.status === 'done' ? t.spent_minutes - t.est_minutes : '', t.status === 'done' ? 'Afgerond' : 'Open'].map(q).join(';'));
   const blob = new Blob(['﻿' + [head.map(q).join(';'), ...lines].join('\r\n')], { type: 'text/csv;charset=utf-8' });
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `teamtaken-${today()}.csv`; a.click();
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `a-gas-teamtaken-${today()}.csv`; a.click();
   URL.revokeObjectURL(a.href);
 }
 

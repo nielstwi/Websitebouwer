@@ -1,4 +1,4 @@
-# Teamtaken
+# A-Gas Teamtaken
 
 Dashboard in de browser: to-do lijst voor de 5 werkdagen (ma–vr) met tijdregistratie en een
 manager-portal met analyse. Draait **gratis** op Cloudflare (Workers + D1, gratis tier, geen creditcard nodig).
