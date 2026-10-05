@@ -1,5 +1,5 @@
 {
-  "name": "a-gas-taken",
+  "name": "teamtaken",
   "version": "2.0.0",
   "description": "Dashboard met to-do lijst voor de 5 werkdagen, tijdregistratie en manager-analyse (Cloudflare Workers + D1, gratis tier)",
   "private": true,
