@@ -30,18 +30,27 @@ label{margin-right:14px}.job{border:1px solid #ccc;border-radius:8px;padding:10p
 <div id="jobs"></div>
 <script>
 async function go(){
-  const url=document.getElementById('url').value.trim(); if(!url) return;
+  const url=document.getElementById('url').value.trim();
+  const el=document.createElement('div');el.className='job';
+  document.getElementById('jobs').prepend(el);
+  if(!url){el.innerHTML='<span class=err>Plak eerst een YouTube-link.</span>';return;}
+  el.textContent='Starten...';
   const m=document.querySelector('input[name=m]:checked').value;
-  const r=await fetch('/api/download',{method:'POST',body:JSON.stringify({url,mode:m})});
-  poll((await r.json()).id);
+  try{
+    const r=await fetch('/api/download',{method:'POST',body:JSON.stringify({url,mode:m})});
+    const d=await r.json();
+    if(!r.ok||!d.id){el.innerHTML='<span class=err>Fout: '+(d.error||r.status)+'</span>';return;}
+    poll(d.id,el);
+  }catch(e){el.innerHTML='<span class=err>Kan de downloader niet bereiken. Staat het zwarte venster nog open? ('+e+')</span>';}
 }
-function poll(id){
-  const el=document.createElement('div');el.className='job';document.getElementById('jobs').prepend(el);
+function poll(id,el){
   const t=setInterval(async()=>{
-    const j=await (await fetch('/api/job/'+id)).json();
-    if(j.status==='done'){clearInterval(t);el.innerHTML='Klaar: <a href="/files/'+encodeURIComponent(j.file)+'">'+j.file+'</a>';}
-    else if(j.status==='error'){clearInterval(t);el.innerHTML='<span class=err>Fout: '+j.error+'</span>';}
-    else el.textContent=(j.progress||'Starten...');
+    try{
+      const j=await (await fetch('/api/job/'+id)).json();
+      if(j.status==='done'){clearInterval(t);el.innerHTML='Klaar: <a href="/files/'+encodeURIComponent(j.file)+'">'+j.file+'</a>';}
+      else if(j.status==='error'){clearInterval(t);el.innerHTML='<span class=err>Fout: '+j.error+'</span>';}
+      else el.textContent=(j.progress||'Bezig...');
+    }catch(e){clearInterval(t);el.innerHTML='<span class=err>Verbinding verbroken ('+e+')</span>';}
   },800);
 }
 </script></html>"""
@@ -60,6 +69,7 @@ def run_job(job_id, url, mode):
         path = download(url, DEFAULT_DIR, mode == "audio", "mp4" if mode == "mp4" else "mkv", hook)
         job.update(status="done", file=Path(path).name)
     except Exception as e:
+        print(f"Fout bij {url}: {e}", flush=True)
         job.update(status="error", error=str(e))
 
 
