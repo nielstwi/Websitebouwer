@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Eenvoudige web-interface (alleen lokaal): python server.py -> http://127.0.0.1:8000"""
 import json
+import sys
 import threading
 import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -113,7 +114,15 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
+    # Zonder venster (pythonw) bestaat er geen console: schrijf dan naar een logbestand.
+    if sys.stdout is None or sys.stderr is None:
+        log = open(Path(__file__).parent / "server.log", "a", encoding="utf-8", buffering=1)
+        sys.stdout = sys.stderr = log
     # Alleen op localhost, zodat niemand anders je downloader kan gebruiken.
-    srv = ThreadingHTTPServer(("127.0.0.1", 8000), Handler)
+    try:
+        srv = ThreadingHTTPServer(("127.0.0.1", 8000), Handler)
+    except OSError:
+        print("Poort 8000 is al in gebruik - de downloader draait waarschijnlijk al.")
+        sys.exit(0)
     print("Open http://127.0.0.1:8000")
     srv.serve_forever()
