@@ -8,6 +8,7 @@ import io
 import json
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import requests
@@ -35,11 +36,9 @@ def main():
     s = requests.Session()
     s.headers.update(H)
     todo = []
-    for f in sorted((DATA / "raw").glob("*.json")):
-        p = json.loads(f.read_text("utf-8"))
-        vs = p.get("variants") or []
-        if len(vs) > 1 and (p.get("gallery") or []):
-            todo.append((f.stem, p))
+    for p in json.loads((DATA / "products_clean.json").read_text("utf-8")):
+        if p["needs_image_match"]:
+            todo.append((p["handle"], {"gallery": [{"url": i["src"]} for i in p["images"]]}))
     print(f"{len(todo)} producten met meerdere varianten")
     for n, (slug, p) in enumerate(todo, 1):
         out = SHEETS / f"{slug}.jpg"
@@ -47,14 +46,15 @@ def main():
             continue
         g = p["gallery"]
         tiles = []
-        for i, x in enumerate(g):
-            im = fetch(s, x["url"]) or Image.new("RGB", (TILE, TILE), "red")
+        with ThreadPoolExecutor(8) as ex:
+            imgs = list(ex.map(lambda x: fetch(s, x["url"]), g))
+        for i, im in enumerate(imgs):
+            im = im or Image.new("RGB", (TILE, TILE), "red")
             im.thumbnail((TILE, TILE))
             c = Image.new("RGB", (TILE, TILE + 22), "white")
             c.paste(im, ((TILE - im.width) // 2, 22))
             ImageDraw.Draw(c).text((4, 4), f"#{i}", fill="black")
             tiles.append(c)
-            time.sleep(0.4)
         cols = 6
         rows = (len(tiles) + cols - 1) // cols
         sheet = Image.new("RGB", (cols * TILE, rows * (TILE + 22)), "white")
