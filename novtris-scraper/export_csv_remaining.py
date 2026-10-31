@@ -26,12 +26,13 @@ hm = json.loads((DATA / "handles.json").read_text("utf-8"))
 dm = json.loads((DATA / "desc_map.json").read_text("utf-8"))
 P = [p for p in json.loads((DATA / "products_clean.json").read_text("utf-8")) if p["handle"] in hm and p["handle"] not in done]
 n = 0
-with open(DATA / "shopify_import_remaining.csv", "w", newline="", encoding="utf-8") as fh:
+with open(DATA / "shopify_import_remaining.csv", "w", newline="", encoding="utf-8-sig") as fh:
     w = csv.DictWriter(fh, HEAD)
     w.writeheader()
     for p in P:
         html = SRC.sub(lambda m: 'src="%s"' % dm.get(m.group(1), m.group(1)), p["description_html"])
         html = re.sub(r"<script\b.*?</script>", "", html, flags=re.I | re.S)
+        html = re.sub(r"\s*[\r\n]+\s*", " ", html).strip()
         for i in range(max(len(p["variants"]), len(p["images"]))):
             r = dict.fromkeys(HEAD, "")
             r["Handle"] = hm[p["handle"]]
