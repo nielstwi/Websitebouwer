@@ -10,8 +10,10 @@ from push_shopify import SRC_RE, build_input
 
 DATA = Path(__file__).parent / "data"
 dm = json.loads((DATA / "desc_map.json").read_text("utf-8"))
+HM = json.loads((DATA / "handles.json").read_text("utf-8"))
 P = {p["handle"]: p for p in json.loads((DATA / "products_clean.json").read_text("utf-8"))}
 p = P[sys.argv[1]]
 html = SRC_RE.sub(lambda m: 'src="%s"' % dm.get(m.group(1), m.group(1)), p["description_html"])
 inp = build_input(p, html, "ACTIVE")
-print(json.dumps({"input": inp, "id": {"handle": inp["handle"]}}, ensure_ascii=False, separators=(",", ":")))
+inp["handle"] = HM[p["handle"]]
+print(json.dumps({"input": inp}, ensure_ascii=False, separators=(",", ":")))
